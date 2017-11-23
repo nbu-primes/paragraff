@@ -54,12 +54,71 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201711231436104_initial.cs" />
+    <Compile Include="Migrations\201711231436104_initial.Designer.cs">
+      <DependentUpon>201711231436104_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711231501460_added-base-models.cs" />
+    <Compile Include="Migrations\201711231501460_added-base-models.Designer.cs">
+      <DependentUpon>201711231501460_added-base-models.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711231517219_added-base-models2.cs" />
+    <Compile Include="Migrations\201711231517219_added-base-models2.Designer.cs">
+      <DependentUpon>201711231517219_added-base-models2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711231538360_user-posts.cs" />
+    <Compile Include="Migrations\201711231538360_user-posts.Designer.cs">
+      <DependentUpon>201711231538360_user-posts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711231548339_user-postrating.cs" />
+    <Compile Include="Migrations\201711231548339_user-postrating.Designer.cs">
+      <DependentUpon>201711231548339_user-postrating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711231556026_user-from-userRating.cs" />
+    <Compile Include="Migrations\201711231556026_user-from-userRating.Designer.cs">
+      <DependentUpon>201711231556026_user-from-userRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711231615469_user-to-userRating.cs" />
+    <Compile Include="Migrations\201711231615469_user-to-userRating.Designer.cs">
+      <DependentUpon>201711231615469_user-to-userRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostRating.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711231436104_initial.resx">
+      <DependentUpon>201711231436104_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231501460_added-base-models.resx">
+      <DependentUpon>201711231501460_added-base-models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231517219_added-base-models2.resx">
+      <DependentUpon>201711231517219_added-base-models2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231538360_user-posts.resx">
+      <DependentUpon>201711231538360_user-posts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231548339_user-postrating.resx">
+      <DependentUpon>201711231548339_user-postrating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231556026_user-from-userRating.resx">
+      <DependentUpon>201711231556026_user-from-userRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231615469_user-to-userRating.resx">
+      <DependentUpon>201711231615469_user-to-userRating.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
