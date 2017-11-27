@@ -106,6 +106,10 @@
     <Compile Include="Migrations\201711271318130_post-comments.Designer.cs">
       <DependentUpon>201711271318130_post-comments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711271439416_book-unique-title.cs" />
+    <Compile Include="Migrations\201711271439416_book-unique-title.Designer.cs">
+      <DependentUpon>201711271439416_book-unique-title.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711271318130_post-comments.resx">
       <DependentUpon>201711271318130_post-comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271439416_book-unique-title.resx">
+      <DependentUpon>201711271439416_book-unique-title.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
