@@ -9,16 +9,29 @@ namespace Paragraff
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/matrix-theme-js").Include(
-                 "~/Content/MatrixTheme/js/bootstrap*",
-                 "~/Content/MatrixTheme/js/excanvas*",
-                 "~/Content/MatrixTheme/js/fullcalendar*",
-                 "~/Content/MatrixTheme/js/jquery*",
-                 "~/Content/MatrixTheme/js/masked*",
-                 "~/Content/MatrixTheme/js/matrix*",
-                 "~/Content/MatrixTheme/js/select2*",
-                 "~/Content/MatrixTheme/js/wysihtml*"));
+               "~/Content/MatrixTheme/js/excanvas.js",
+               "~/Content/MatrixTheme/js/bootstrap.js",
+               "~/Content/MatrixTheme/js/jquery.js",
+               "~/Content/MatrixTheme/js/jquery.ui.custom.js",
+               "~/Content/MatrixTheme/js/jquery.flot.js",
+               "~/Content/MatrixTheme/js/jquery.flot.resize.js",
+               "~/Content/MatrixTheme/js/jquery.peity.js",
+               "~/Content/MatrixTheme/js/fullcalendar.js",
+               "~/Content/MatrixTheme/js/matrix.js",
+               "~/Content/MatrixTheme/js/matrix.dashboard.js",
+               "~/Content/MatrixTheme/js/jquery.gritter.js",
+               "~/Content/MatrixTheme/js/matrix.interface.js",
+               "~/Content/MatrixTheme/js/matrix.chat.js",
+               "~/Content/MatrixTheme/js/matrix.form_validation.js",
+               "~/Content/MatrixTheme/js/jquery.wizard.js",
+               "~/Content/MatrixTheme/js/jquery.uniform.js",
+               "~/Content/MatrixTheme/js/select2.min.js",
+               "~/Content/MatrixTheme/js/matrix.popover.js",
+               "~/Content/MatrixTheme/js/jquery.dataTables.min.js",
+               "~/Content/MatrixTheme/js/matrix.tables.js"));
 
             bundles.Add(new StyleBundle("~/bundles/matrix-theme-css").Include(
+
                 "~/Content/MatrixTheme/css/bootstrap*",
                 "~/Content/MatrixTheme/css/font-awesome.css",
                 "~/Content/MatrixTheme/css/fullcalendar.css",
@@ -28,6 +41,7 @@ namespace Paragraff
                 "~/Content/MatrixTheme/css/select2.css",
                 "~/Content/MatrixTheme/css/uniform.css",
                 "~/Content/MatrixTheme/css/matrix-*"));
+            
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
@@ -46,7 +60,7 @@ namespace Paragraff
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       //"~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }
