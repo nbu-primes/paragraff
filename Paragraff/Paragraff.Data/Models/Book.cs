@@ -14,7 +14,10 @@ namespace Paragraff.Data.Models
         [Required]
         public string Title { get; set; }
 
-        //Category
+        [Required]
+        public Guid CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
 
         public string WisherId { get; set; }
 

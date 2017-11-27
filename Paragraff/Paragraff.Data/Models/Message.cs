@@ -14,9 +14,15 @@ namespace Paragraff.Data.Models
         [Required]
         public string Content { get; set; }
 
-        //From User
+        [Required]
+        public string FromUserId { get; set; }
 
-        //To User
+        public virtual User FromUser { get; set; }
+        
+        [Required]
+        public string ToUserId { get; set; }
+
+        public virtual User ToUser { get; set; }
 
         public DateTime SendOn { get; set; }
     }

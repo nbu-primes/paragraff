@@ -106,6 +106,18 @@
     <Compile Include="Migrations\201711271318130_post-comments.Designer.cs">
       <DependentUpon>201711271318130_post-comments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711271342062_message-fromuser.cs" />
+    <Compile Include="Migrations\201711271342062_message-fromuser.Designer.cs">
+      <DependentUpon>201711271342062_message-fromuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271344215_message-touser.cs" />
+    <Compile Include="Migrations\201711271344215_message-touser.Designer.cs">
+      <DependentUpon>201711271344215_message-touser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271352564_book-category.cs" />
+    <Compile Include="Migrations\201711271352564_book-category.Designer.cs">
+      <DependentUpon>201711271352564_book-category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
@@ -160,6 +172,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711271318130_post-comments.resx">
       <DependentUpon>201711271318130_post-comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271342062_message-fromuser.resx">
+      <DependentUpon>201711271342062_message-fromuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271344215_message-touser.resx">
+      <DependentUpon>201711271344215_message-touser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271352564_book-category.resx">
+      <DependentUpon>201711271352564_book-category.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
