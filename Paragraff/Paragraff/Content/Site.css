@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+div#body-container{
+    margin-left:30px !important;
+}
