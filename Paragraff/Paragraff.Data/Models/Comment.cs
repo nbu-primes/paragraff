@@ -14,8 +14,16 @@ namespace Paragraff.Data.Models
         [Required]
         [StringLength(200, MinimumLength = 5)]
         public string Content { get; set; }
+        
+        [Required]
+        public string CreatorId { get; set; }
 
-        //Creator
+        public virtual User Creator { get; set; }
+
+        [Required]
+        public Guid PostId { get; set; }
+
+        public virtual Post Post { get; set; }
 
         public DateTime CreatedOn { get; set; }
     }

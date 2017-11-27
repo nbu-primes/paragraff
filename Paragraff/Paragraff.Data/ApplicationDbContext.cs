@@ -21,10 +21,20 @@ namespace Paragraff.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>()
-            .HasMany<UserRating>(u => u.UserRatings)
-            .WithRequired(s => s.FromUser)
-            .HasForeignKey(s => s.FromUserId);
-            
+                .HasMany<UserRating>(u => u.UserRatings)
+                .WithRequired(s => s.FromUser)
+                .HasForeignKey(s => s.FromUserId);
+
+            modelBuilder.Entity<User>()
+                .HasMany<Post>(u => u.Posts)
+                .WithRequired(p => p.Publisher)
+                .HasForeignKey(p => p.PublisherId);
+
+            modelBuilder.Entity<User>()
+                .HasMany<Post>(u => u.Trades)
+                .WithRequired(p => p.TradedWith)
+                .HasForeignKey(p => p.TradedWithId);
+
         }
 
         public IDbSet<Book> Books { get; set; }
@@ -37,15 +47,15 @@ namespace Paragraff.Data
 
         public IDbSet<UserRating> UserRatings { get; set; }
 
-        public IDbSet<Comment> Comments{ get; set; }
+        public IDbSet<Comment> Comments { get; set; }
 
         public IDbSet<Message> Messages { get; set; }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        
+
     }
 }

@@ -82,6 +82,30 @@
     <Compile Include="Migrations\201711231615469_user-to-userRating.Designer.cs">
       <DependentUpon>201711231615469_user-to-userRating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711271235156_user-trades.cs" />
+    <Compile Include="Migrations\201711271235156_user-trades.Designer.cs">
+      <DependentUpon>201711271235156_user-trades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271252273_wishlist-book-user.cs" />
+    <Compile Include="Migrations\201711271252273_wishlist-book-user.Designer.cs">
+      <DependentUpon>201711271252273_wishlist-book-user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271258446_post-book.cs" />
+    <Compile Include="Migrations\201711271258446_post-book.Designer.cs">
+      <DependentUpon>201711271258446_post-book.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271305394_postRatings-post.cs" />
+    <Compile Include="Migrations\201711271305394_postRatings-post.Designer.cs">
+      <DependentUpon>201711271305394_postRatings-post.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271313177_comments-user.cs" />
+    <Compile Include="Migrations\201711271313177_comments-user.Designer.cs">
+      <DependentUpon>201711271313177_comments-user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271318130_post-comments.cs" />
+    <Compile Include="Migrations\201711271318130_post-comments.Designer.cs">
+      <DependentUpon>201711271318130_post-comments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
@@ -118,6 +142,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711231615469_user-to-userRating.resx">
       <DependentUpon>201711231615469_user-to-userRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271235156_user-trades.resx">
+      <DependentUpon>201711271235156_user-trades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271252273_wishlist-book-user.resx">
+      <DependentUpon>201711271252273_wishlist-book-user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271258446_post-book.resx">
+      <DependentUpon>201711271258446_post-book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271305394_postRatings-post.resx">
+      <DependentUpon>201711271305394_postRatings-post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271313177_comments-user.resx">
+      <DependentUpon>201711271313177_comments-user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271318130_post-comments.resx">
+      <DependentUpon>201711271318130_post-comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

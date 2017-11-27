@@ -15,12 +15,16 @@ namespace Paragraff.Data.Models
         private ICollection<Post> posts;
         private ICollection<PostRating> postRatings;
         private ICollection<UserRating> userRatings;
+        private ICollection<Post> trades;
+        private ICollection<Book> wishlist; 
 
         public User()
         {
             this.posts = new HashSet<Post>();
             this.postRatings = new HashSet<PostRating>();
             this.userRatings = new HashSet<UserRating>();
+            this.trades = new HashSet<Post>();
+            this.wishlist = new HashSet<Book>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
@@ -67,6 +71,30 @@ namespace Paragraff.Data.Models
             }
         }
 
-        public bool isActive { get; set; }
+        public virtual ICollection<Post> Trades
+        {
+            get
+            {
+                return this.trades;
+            }
+            set
+            {
+                this.trades = value;
+            }
+        }
+
+        public virtual ICollection<Book> Wishlist
+        {
+            get
+            {
+                return this.wishlist;
+            }
+            set
+            {
+                this.wishlist = value;
+            }
+        }
+
+        public bool IsActive { get; set; }
     }
 }

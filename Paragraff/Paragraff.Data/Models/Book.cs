@@ -16,6 +16,10 @@ namespace Paragraff.Data.Models
 
         //Category
 
+        public string WisherId { get; set; }
+
+        public virtual User Wisher { get; set; }
+
         [Required]
         public string Author { get; set; }
         

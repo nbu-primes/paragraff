@@ -17,7 +17,10 @@ namespace Paragraff.Data.Models
         public virtual User User { get; set; }
 
         public int Rating { get; set; }
+        
+        [Required]
+        public Guid PostId { get; set; }
 
-        //Post
+        public virtual Post Post { get; set; }
     }
 }
