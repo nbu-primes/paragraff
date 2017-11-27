@@ -109,6 +109,7 @@
     <Compile Include="Migrations\201711271439416_book-unique-title.cs" />
     <Compile Include="Migrations\201711271439416_book-unique-title.Designer.cs">
       <DependentUpon>201711271439416_book-unique-title.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201711271342062_message-fromuser.cs" />
     <Compile Include="Migrations\201711271342062_message-fromuser.Designer.cs">
       <DependentUpon>201711271342062_message-fromuser.cs</DependentUpon>
@@ -178,6 +179,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711271439416_book-unique-title.resx">
       <DependentUpon>201711271439416_book-unique-title.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711271342062_message-fromuser.resx">
       <DependentUpon>201711271342062_message-fromuser.cs</DependentUpon>
     </EmbeddedResource>
