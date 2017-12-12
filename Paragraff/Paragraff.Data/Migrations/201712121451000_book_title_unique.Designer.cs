@@ -7,13 +7,13 @@ namespace Paragraff.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class bookuniquetitle : IMigrationMetadata
+    public sealed partial class book_title_unique : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(bookuniquetitle));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(book_title_unique));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711271439416_book-unique-title"; }
+            get { return "201712121451000_book_title_unique"; }
         }
         
         string IMigrationMetadata.Source

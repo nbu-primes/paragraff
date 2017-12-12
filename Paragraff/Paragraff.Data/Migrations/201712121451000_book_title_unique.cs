@@ -3,7 +3,7 @@ namespace Paragraff.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class bookuniquetitle : DbMigration
+    public partial class book_title_unique : DbMigration
     {
         public override void Up()
         {
