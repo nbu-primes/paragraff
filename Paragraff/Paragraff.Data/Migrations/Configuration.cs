@@ -14,7 +14,6 @@ namespace Paragraff.Data.Migrations
         {
             AutomaticMigrationsEnabled = false;
             AutomaticMigrationDataLossAllowed = false;
-
         }
 
         protected override void Seed(ApplicationDbContext context)
@@ -38,21 +37,21 @@ namespace Paragraff.Data.Migrations
                 context.SaveChanges();
             }
 
-            //if (!context.Users.Any(u => u.UserName == "Random"))
-            //{
-            //    var admin = new User
-            //    {
-            //        UserName = "Random",
-            //        Email = "random@random.com"
-            //    };
+            if (!context.Users.Any(u => u.UserName == "Random"))
+            {
+                var admin = new User
+                {
+                    UserName = "Random",
+                    Email = "random@random.com"
+                };
 
-            //    var password = "Random123!";
+                var password = "Random123!";
 
-            //    var userStore = new UserStore<User>();
-            //    var userManager = new UserManager<User>(userStore);
-            //    userManager.Create(admin, password);
-            //    userManager.AddToRoles(admin.Id, new[] { "Admin" });
-            //}
+                var userManager = new UserManager<User>(new UserStore<User>(context));
+
+                userManager.Create(admin, password);
+                userManager.AddToRoles(admin.Id, new[] { "Admin" });
+            }
         }
     }
 }
