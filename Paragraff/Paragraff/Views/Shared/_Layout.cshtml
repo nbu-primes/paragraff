@@ -41,7 +41,21 @@
                 </ul>
             </li>
             <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
-            <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="">
+                    @Ajax.ActionLink("Logout", "LogOff", "Account", null, new AjaxOptions { HttpMethod = "POST" }, new { @class = "ajax-logout" })
+                    @*<a title="" href="login.html"><i class="icon icon-share-alt"></i> Logout</a>*@
+                </li>
+            }
+            else
+            {
+                <li class="">
+                    <a class="nav-link" href="@Url.Action("Login","Account", new {area="" })">
+                        <i class="fa fa-fw fa-sign-in"></i>Login
+                    </a>
+                </li>
+            }
         </ul>
     </div>
     <!--close-top-Header-menu-->
@@ -151,6 +165,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/matrix-theme-js")
+    @Scripts.Render("~/bundles/jquery-ajax")
 
     @RenderSection("scripts", required: false)
 
@@ -178,6 +193,9 @@
         function resetMenu() {
             document.gomenu.selector.selectedIndex = 2;
         }
+
+        $('.ajax-logout').prepend('<i class="icon icon-share-alt"></i>');
+
     </script>
 
 </body>
