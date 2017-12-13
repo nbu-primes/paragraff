@@ -37,18 +37,18 @@ namespace Paragraff.Data.Migrations
                 context.SaveChanges();
             }
 
-            if (!context.Users.Any(u => u.UserName == "Random"))
+            if (!context.Users.Any(u => u.UserName == "test"))
             {
                 var admin = new User
                 {
-                    UserName = "Random",
-                    Email = "random@random.com"
+                    UserName = "test",
+                    Email = "test@test.com"
                 };
 
-                var password = "Random123!";
+                var password = "Test!23";
 
-                var userManager = new UserManager<User>(new UserStore<User>(context));
-
+                var userStore = new UserStore<User>(context);
+                var userManager = new UserManager<User>(userStore);
                 userManager.Create(admin, password);
                 userManager.AddToRoles(admin.Id, new[] { "Admin" });
             }

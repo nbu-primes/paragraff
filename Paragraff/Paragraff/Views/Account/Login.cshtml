@@ -1,63 +1,80 @@
 ﻿@using Paragraff.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
+    Layout = null;
 }
-
-<h2>@ViewBag.Title.</h2>
+<head>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/matrix-theme-css")
+</head>
 <div class="row">
     <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        <div id="loginbox">
+            <div class="control-group normal_text"> <h3><img src="~/Content/MatrixTheme/img/logo.png" /></h3></div>
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-vertical loginform", role = "form" }))
             {
+                @Html.ValidationSummary()
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_lg"><i class="icon-user"></i></span>
+                            @Html.EditorFor(m => m.Username, new { @placeholder = "Username", @class = "" })
+                            <div>
+                                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <br />
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span>
+                            @Html.EditorFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
+                            <div>
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                    <div class="controls">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
+
+                <div class="form-actions">
+                    <a href="@Url.Action("Register", "Account")" class="flip-link btn btn-info">Register</a>
+                    <input type="submit" class="btn btn-success" value="Login" />
                 </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+
             }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
+
+            @*<form id="recoverform" action="#" class="form-vertical">
+                    <p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
+
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
+                        <span class="pull-right"><a class="btn btn-info" />Reecover</a></span>
+                    </div>
+                </form>*@
+        </div>
     </div>
 </div>
 
-@section Scripts {
+
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-}
+    @Scripts.Render("~/bundles/matrix-theme-js")
+    @Scripts.Render("~/bundles/jquery-ajax")
