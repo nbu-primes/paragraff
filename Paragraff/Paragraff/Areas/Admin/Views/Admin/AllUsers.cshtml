@@ -1,0 +1,12 @@
+﻿@model List<AllUsersViewModel>
+@{
+    ViewBag.Title = "AllUsers";
+}
+
+<h2>AllUsers</h2>
+
+@foreach (var item in Model)
+{
+    <h3>@item.Username</h3>
+}
+

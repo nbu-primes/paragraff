@@ -16,6 +16,11 @@ namespace Paragraff.Data
         {
         }
 
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -51,10 +56,7 @@ namespace Paragraff.Data
 
         public IDbSet<Message> Messages { get; set; }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+        
 
 
     }

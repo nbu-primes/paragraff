@@ -381,6 +381,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AllUsers.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -445,9 +446,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Paragraff.DataServices\Paragraff.DataServices.csproj">
+      <Project>{c64e3be3-5b92-4b3d-bb8a-01c0e7e82e61}</Project>
+      <Name>Paragraff.DataServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Paragraff.Data\Paragraff.Data.csproj">
       <Project>{0696390C-4904-4FF6-BFEE-022F04AE2CA1}</Project>
       <Name>Paragraff.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Paragraff.ViewModels\Paragraff.ViewModels.csproj">
+      <Project>{26CA5E76-5C7E-4BC6-90E9-FAD12333FB16}</Project>
+      <Name>Paragraff.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

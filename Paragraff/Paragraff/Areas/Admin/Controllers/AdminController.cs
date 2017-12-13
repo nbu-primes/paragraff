@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paragraff.DataServices.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,23 @@ namespace Paragraff.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly IAdminService adminService;
+
+        public AdminController(IAdminService adminService)
+        {
+            this.adminService = adminService;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
-        public ActionResult About()
+        public ActionResult AllUsers()
         {
-            ViewBag.Message = "Your application description page.";
+            var allUsers = adminService.DisplayAllUsers();
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return this.View(allUsers);
         }
     }
 }
