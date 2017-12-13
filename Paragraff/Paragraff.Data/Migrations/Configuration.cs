@@ -14,7 +14,6 @@ namespace Paragraff.Data.Migrations
         {
             AutomaticMigrationsEnabled = false;
             AutomaticMigrationDataLossAllowed = false;
-
         }
 
         protected override void Seed(ApplicationDbContext context)
