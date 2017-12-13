@@ -43,16 +43,22 @@
             <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
             @if (User.Identity.IsAuthenticated)
             {
-                <li class="">
-                    @Ajax.ActionLink("Logout", "LogOff", "Account", null, new AjaxOptions { HttpMethod = "POST" }, new { @class = "ajax-logout" })
-                    @*<a title="" href="login.html"><i class="icon icon-share-alt"></i> Logout</a>*@
+                <li>
+                    @using (Html.BeginForm("Logoff", "Account",FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <a class="nav-link">
+                            <i class="icon icon-share-alt"></i> <input type="submit" class="btn btn-primary" value="Logout"/>
+                        </a>
+                    }
                 </li>
             }
             else
             {
-                <li class="">
+                <li>
                     <a class="nav-link" href="@Url.Action("Login","Account", new {area="" })">
-                        <i class="fa fa-fw fa-sign-in"></i>Login
+                        <i class="icon icon-share-alt"></i> Login
                     </a>
                 </li>
             }

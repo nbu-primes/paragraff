@@ -26,3 +26,7 @@ textarea {
 div#body-container{
     margin-left:30px !important;
 }
+
+.validation-msg{
+    color:orangered !important;
+}
