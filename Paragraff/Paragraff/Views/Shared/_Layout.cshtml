@@ -44,21 +44,16 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <li>
-                    @using (Html.BeginForm("Logoff", "Account",FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <a class="nav-link">
-                            <i class="icon icon-share-alt"></i> <input type="submit" class="btn btn-primary" value="Logout"/>
-                        </a>
-                    }
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="icon icon-share-alt"></i>Logout
+                    </a>
                 </li>
             }
             else
             {
                 <li>
                     <a class="nav-link" href="@Url.Action("Login","Account", new {area="" })">
-                        <i class="icon icon-share-alt"></i> Login
+                        <i class="icon icon-arrow-left"></i> Login
                     </a>
                 </li>
             }
@@ -166,6 +161,35 @@
     <div class="row-fluid">
         <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
     </div>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title inline" id="logoutModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new {@class="inline" }))
+                    {
+                        @Html.AntiForgeryToken();
+                        <input type="submit" class="btn btn-primary" value="Logout" />
+                    }
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 
     <!--end-Footer-part-->
 

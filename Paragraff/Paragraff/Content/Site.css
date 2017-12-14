@@ -30,3 +30,7 @@ div#body-container{
 .validation-msg{
     color:orangered !important;
 }
+
+.inline{
+    display:inline-block;
+}

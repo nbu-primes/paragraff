@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-8">
         <div id="loginbox">
-            <div class="control-group normal_text"> <h3><img src="~/Content/MatrixTheme/img/logo.png" /></h3></div>
+            <a href="@Url.Action("Index", "Home",new {area = "" })" class="control-group normal_text"> <h3><img src="~/Content/MatrixTheme/img/logo.png" /></h3></a>
             @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-vertical loginform", role = "form" }))
             {
                 @Html.ValidationSummary()
