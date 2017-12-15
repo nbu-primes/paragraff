@@ -13,15 +13,51 @@ using Microsoft.Owin.Security;
 using Paragraff.Models;
 using Paragraff.Data.Models;
 using Paragraff.Data;
+using SendGrid.Helpers.Mail;
+using System.Configuration;
+using System.Net.Mail;
+using System.Net;
+using SendGrid;
+using System.Diagnostics;
 
 namespace Paragraff
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await this.configSendGridasync(message);
+        }
+
+        // Use NuGet to install SendGrid (Basic C# client lib) 
+        private async Task configSendGridasync(IdentityMessage message)
+        {
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new EmailAddress("Joe@contoso.com", "Joe S.");
+            myMessage.Subject = message.Subject;
+            myMessage.PlainTextContent = message.Body;
+            myMessage.HtmlContent = message.Body;
+
+            var credentials = new System.Net.NetworkCredential(
+                       ConfigurationManager.AppSettings["mailAccount"],
+                       ConfigurationManager.AppSettings["mailPassword"]
+                       );
+
+            //var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            var client = new SendGridClient("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");
+
+            // Send the email.
+            if (client != null)
+            {
+                await client.SendEmailAsync(myMessage);
+            }
+            else
+            {
+                Trace.TraceError("Failed to create Web transport.");
+                await Task.FromResult(0);
+            }
         }
     }
 
