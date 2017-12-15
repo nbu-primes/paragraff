@@ -13,7 +13,7 @@
             <a href="@Url.Action("Index", "Home",new {area = "" })" class="control-group normal_text"> <h3><img src="~/Content/MatrixTheme/img/logo.png" /></h3></a>
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-vertical loginform", role = "form" }))
             {
-                @Html.ValidationSummary("", new {@class="validation-msg"})
+                @Html.ValidationSummary("", new { @class = "validation-msg" })
                 @Html.AntiForgeryToken()
 
                 <div class="control-group">
@@ -37,15 +37,15 @@
                         </div>
                     </div>
                     @*<div class="controls">
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    @Html.LabelFor(m => m.RememberMe)
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(m => m.RememberMe)
+                                        @Html.LabelFor(m => m.RememberMe)
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>*@
+                        </div>*@
                 </div>
 
                 <div class="form-actions">
@@ -72,9 +72,7 @@
         </div>
     </div>
 </div>
-
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/matrix-theme-js")
-    @Scripts.Render("~/bundles/jquery-ajax")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/matrix-theme-js")
+@Scripts.Render("~/bundles/jquery-ajax")
