@@ -14,15 +14,15 @@ $(document).ready(function(){
     }
 
 	// === Make chart === //
-    var plot = $.plot($(".chart"),
-           [ { data: sin, label: "sin(x)", color: "#ee7951"}, { data: cos, label: "cos(x)",color: "#4fb9f0" } ], {
-               series: {
-                   lines: { show: true },
-                   points: { show: true }
-               },
-               grid: { hoverable: true, clickable: true },
-               yaxis: { min: -1.6, max: 1.6 }
-		   });
+    //var plot = $.plot($(".chart"),
+    //       [ { data: sin, label: "sin(x)", color: "#ee7951"}, { data: cos, label: "cos(x)",color: "#4fb9f0" } ], {
+    //           series: {
+    //               lines: { show: true },
+    //               points: { show: true }
+    //           },
+    //           grid: { hoverable: true, clickable: true },
+    //           yaxis: { min: -1.6, max: 1.6 }
+		  // });
     
 	// === Point hover in chart === //
     var previousPoint = null;

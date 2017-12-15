@@ -25,9 +25,9 @@ namespace Paragraff
                "~/Content/MatrixTheme/js/matrix.form_validation.js",
                "~/Content/MatrixTheme/js/jquery.wizard.js",
                "~/Content/MatrixTheme/js/jquery.uniform.js",
-               "~/Content/MatrixTheme/js/select2.min.js",
+               "~/Content/MatrixTheme/js/select2.js",
                "~/Content/MatrixTheme/js/matrix.popover.js",
-               "~/Content/MatrixTheme/js/jquery.dataTables.min.js",
+               "~/Content/MatrixTheme/js/jquery.dataTables.js",
                "~/Content/MatrixTheme/js/matrix.tables.js"));
 
             bundles.Add(new StyleBundle("~/bundles/matrix-theme-css").Include(
@@ -43,8 +43,8 @@ namespace Paragraff
                 "~/Content/MatrixTheme/css/matrix-*"));
             
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            //            "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-ajax").Include(
                        "~/Scripts/jquery.unobtrusive*"));
