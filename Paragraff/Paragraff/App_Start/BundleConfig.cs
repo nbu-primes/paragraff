@@ -11,7 +11,6 @@ namespace Paragraff
             bundles.Add(new ScriptBundle("~/bundles/matrix-theme-js").Include(
                "~/Content/MatrixTheme/js/excanvas.js",
                "~/Content/MatrixTheme/js/bootstrap.js",
-               "~/Content/MatrixTheme/js/jquery.js",
                "~/Content/MatrixTheme/js/jquery.ui.custom.js",
                "~/Content/MatrixTheme/js/jquery.flot.js",
                "~/Content/MatrixTheme/js/jquery.flot.resize.js",
@@ -31,7 +30,6 @@ namespace Paragraff
                "~/Content/MatrixTheme/js/matrix.tables.js"));
 
             bundles.Add(new StyleBundle("~/bundles/matrix-theme-css").Include(
-
                 "~/Content/MatrixTheme/css/bootstrap*",
                 "~/Content/MatrixTheme/css/font-awesome.css",
                 "~/Content/MatrixTheme/css/fullcalendar.css",
@@ -41,10 +39,10 @@ namespace Paragraff
                 "~/Content/MatrixTheme/css/select2.css",
                 "~/Content/MatrixTheme/css/uniform.css",
                 "~/Content/MatrixTheme/css/matrix-*"));
-            
 
-            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-            //            "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-ajax").Include(
                        "~/Scripts/jquery.unobtrusive*"));
