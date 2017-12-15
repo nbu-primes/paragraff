@@ -14,6 +14,8 @@ namespace Paragraff.App_Start
     using Microsoft.AspNet.Identity.Owin;
     using Paragraff.Data.Models;
     using Microsoft.AspNet.Identity;
+    using Paragraff.DataServices.Contracts;
+    using Paragraff.DataServices;
 
     public static class NinjectWebCommon
     {
@@ -77,14 +79,15 @@ namespace Paragraff.App_Start
                    .Current
                    .GetOwinContext()
                    .Get<ApplicationDbContext>()
-               )
-               .InRequestScope();
+               );
 
             kernel.Bind<UserManager<User>>()
                .ToMethod(_ => HttpContext
               .Current
               .GetOwinContext()
               .GetUserManager<ApplicationUserManager>());
+
+            kernel.Bind<IAdminService>().To<AdminService>();
         }
     }
 }
