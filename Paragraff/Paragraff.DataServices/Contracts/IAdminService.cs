@@ -10,6 +10,6 @@ namespace Paragraff.DataServices.Contracts
 {
     public interface IAdminService
     {
-        List<AllUsersViewModel> DisplayAllUsers();
+        List<PublicUserViewModel> DisplayAllUsers();
     }
 }

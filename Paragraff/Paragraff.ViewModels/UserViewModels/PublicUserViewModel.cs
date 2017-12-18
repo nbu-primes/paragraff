@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Paragraff.ViewModels.UserViewModels
 {
-    public class AllUsersViewModel
+    public class PublicUserViewModel
     {
         public string Id { get; set; }
 
@@ -15,5 +15,7 @@ namespace Paragraff.ViewModels.UserViewModels
         public string Email { get; set; }
 
         public bool IsAdmin { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

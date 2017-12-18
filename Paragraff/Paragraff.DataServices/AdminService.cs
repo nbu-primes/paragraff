@@ -23,13 +23,14 @@ namespace Paragraff.DataServices
             this.userManager = userManager;
         }
 
-        public List<AllUsersViewModel> DisplayAllUsers()
+        public List<PublicUserViewModel> DisplayAllUsers()
         {
-            var allUsers = this.dbContext.Users.Select(m => new AllUsersViewModel()
+            var allUsers = this.dbContext.Users.Select(m => new PublicUserViewModel()
             {
                 Id = m.Id,
                 Username = m.UserName,
                 Email = m.Email,
+                IsActive = m.IsActive
             }).ToList();
             foreach (var user in allUsers)
             {

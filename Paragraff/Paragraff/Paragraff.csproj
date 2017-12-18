@@ -329,6 +329,10 @@
     <Content Include="Content\MatrixTheme\js\matrix.wizard.js" />
     <Content Include="Content\MatrixTheme\js\select2.js" />
     <Content Include="Content\MatrixTheme\js\wysihtml5-0.3.0.js" />
+    <Content Include="Error_Pages\error403.html" />
+    <Content Include="Error_Pages\error404.html" />
+    <Content Include="Error_Pages\error405.html" />
+    <Content Include="Error_Pages\error500.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
