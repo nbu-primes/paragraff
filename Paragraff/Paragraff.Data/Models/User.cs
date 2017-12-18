@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Paragraff.ViewModels.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -26,6 +28,22 @@ namespace Paragraff.Data.Models
             this.trades = new HashSet<Post>();
             this.wishlist = new HashSet<Book>();
         }
+
+        [StringLength(100)]
+        public string FirstName { get; set; }
+
+        [StringLength(100)]
+        public string LastName { get; set; }
+
+        [StringLength(350)]
+        public string About { get; set; }
+
+        public Gender Gender { get; set; }
+
+        [StringLength(100)]
+        public string Location { get; set; }
+        
+        public byte[] ProfilePicture { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

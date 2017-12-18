@@ -32,9 +32,9 @@
                     <div class="controls">
                         <div class="main_input_box">
                             <span class="add-on bg_ly"><i class="icon-lock"></i></span>
-                            @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", @class = "form-control" })
+                            @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
                             <div>
-                                @Html.ValidationMessageFor(m => m.ConfirmPassword,"", new { @class = "validation-msg" })
+                                @Html.ValidationMessageFor(m => m.Password, null, new { @class = "validation-msg" })
                             </div>
                         </div>
                     </div>
@@ -42,9 +42,9 @@
                     <div class="controls">
                         <div class="main_input_box">
                             <span class="add-on bg_ly"><i class="icon-lock"></i></span>
-                            @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm Password", @class = "form-control" })
                             <div>
-                                @Html.ValidationMessageFor(m => m.Password, null, new { @class = "validation-msg" })
+                                @Html.ValidationMessageFor(m => m.ConfirmPassword,"", new { @class = "validation-msg" })
                             </div>
                         </div>
                     </div>

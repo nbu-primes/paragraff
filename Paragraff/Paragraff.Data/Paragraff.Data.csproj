@@ -122,6 +122,10 @@
     <Compile Include="Migrations\201712121451000_book_title_unique.Designer.cs">
       <DependentUpon>201712121451000_book_title_unique.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712151608397_additional-user-fields.cs" />
+    <Compile Include="Migrations\201712151608397_additional-user-fields.Designer.cs">
+      <DependentUpon>201712151608397_additional-user-fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
@@ -189,6 +193,15 @@
     <EmbeddedResource Include="Migrations\201712121451000_book_title_unique.resx">
       <DependentUpon>201712121451000_book_title_unique.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712151608397_additional-user-fields.resx">
+      <DependentUpon>201712151608397_additional-user-fields.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Paragraff.ViewModels\Paragraff.ViewModels.csproj">
+      <Project>{26CA5E76-5C7E-4BC6-90E9-FAD12333FB16}</Project>
+      <Name>Paragraff.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,71 @@
+﻿@model EditUserViewModel
+@using System.Linq
+
+<h2>edit user</h2>
+
+<div class="widget-box">
+    <div class="widget-title">
+        <span class="icon"> <i class="icon-align-justify"></i> </span>
+        <h5>Personal-info</h5>
+    </div>
+    <div class="widget-content nopadding">
+        <form action="#" method="get" class="form-horizontal">
+            <div class="control-group">
+                @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10 span5">
+                    <label class="custom-file-upload">
+                        <input type="file" class="no-input" />
+                        <i class="icon icon-picture"></i> Upload
+                    </label>
+
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.FirstName, "First Name: ", new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EditorFor(m => m.FirstName, new { @class = "span11" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.LastName, "Last Name: ", new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EditorFor(m => m.LastName, new { @class = "span11" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Gender, "Gender: ", new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EnumDropDownListFor(m => m.Gender)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Location, "Location: ", new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EditorFor(m => m.Location, new { @class = "span11" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(m => m.Location)
+                </div>
+            </div>
+
+            <div class="control-group">
+                @Html.LabelFor(m => m.About, "About Me: ", new { @class = "control-label" })
+                <div class="controls">
+                    @Html.TextAreaFor(m => m.About, new { @class = "span11" })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(m => m.About)
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
