@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Paragraff.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly IAdminService adminService;
@@ -25,7 +26,8 @@ namespace Paragraff.Areas.Admin.Controllers
         {
             var allUsers = adminService.DisplayAllUsers();
 
-            return this.View(allUsers);
+            return this.PartialView(allUsers);
         }
+
     }
 }

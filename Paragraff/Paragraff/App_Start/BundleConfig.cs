@@ -23,11 +23,17 @@ namespace Paragraff
                "~/Content/MatrixTheme/js/matrix.chat.js",
                "~/Content/MatrixTheme/js/matrix.form_validation.js",
                "~/Content/MatrixTheme/js/jquery.wizard.js",
-               "~/Content/MatrixTheme/js/jquery.uniform.js",
                "~/Content/MatrixTheme/js/select2.js",
-               "~/Content/MatrixTheme/js/matrix.popover.js",
-               "~/Content/MatrixTheme/js/jquery.dataTables.js",
-               "~/Content/MatrixTheme/js/matrix.tables.js"));
+               "~/Content/MatrixTheme/js/matrix.popover.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/uniform").Include(
+               "~/Content/MatrixTheme/js/jquery.uniform.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/matrix-tables").Include(
+                "~/Content/MatrixTheme/js/jquery.dataTables.js",
+                "~/Content/MatrixTheme/js/matrix.tables.js"
+                ));
 
             bundles.Add(new StyleBundle("~/bundles/matrix-theme-css").Include(
                 "~/Content/MatrixTheme/css/bootstrap*",

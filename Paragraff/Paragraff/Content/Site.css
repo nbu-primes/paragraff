@@ -23,16 +23,16 @@ textarea {
     max-width: 280px;
 }
 
-div#body-container{
-    margin-left:30px !important;
+div#body-container {
+    margin-left: 30px !important;
 }
 
-.validation-msg{
-    color:orangered !important;
+.validation-msg {
+    color: orangered !important;
 }
 
-.inline{
-    display:inline-block;
+.inline {
+    display: inline-block;
 }
 
 .no-input {
@@ -42,9 +42,41 @@ div#body-container{
 .custom-file-upload {
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left:-10px;
+    margin-left: -10px;
     border: 1px solid #ccc;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+}
+
+/*dynamic labels*/
+/* adapted from http://maxwells.github.io/bootstrap-tags.html */
+.tag {
+    font-size: 14px;
+    padding: .3em .4em .4em;
+    margin: 0 .1em;
+}
+
+.tag a {
+color: #bbb;
+cursor: pointer;
+opacity: 0.6;
+}
+
+.tag a:hover {
+    opacity: 1.0
+}
+
+.tag .remove {
+vertical-align: bottom;
+top: 0;
+}
+
+.tag a {
+margin: 0 0 0 .3em;
+}
+
+.tag a .glyphicon-white {
+    color: #fff;
+    margin-bottom: 2px;
 }

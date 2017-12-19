@@ -1,7 +1,6 @@
 ﻿@model List<PublicUserViewModel>
-@{
-    ViewBag.Title = "AllUsers";
-}
+
+@*@Html.Partial("_AdminDashboard")*@
 <div class="widget-box">
     <div class="widget-title">
         <span class="icon"><i class="icon-th"></i></span>
@@ -48,8 +47,13 @@
                         </td>
                     </tr>
                     i++;
-                 }
+                }
             </tbody>
         </table>
     </div>
 </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/uniform")
+@Scripts.Render("~/bundles/matrix-tables")
+
