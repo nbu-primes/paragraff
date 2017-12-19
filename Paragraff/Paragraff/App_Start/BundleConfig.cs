@@ -10,13 +10,11 @@ namespace Paragraff
         {
             bundles.Add(new ScriptBundle("~/bundles/matrix-theme-js").Include(
                "~/Content/MatrixTheme/js/excanvas.js",
-               "~/Content/MatrixTheme/js/bootstrap.js",
                "~/Content/MatrixTheme/js/jquery.ui.custom.js",
                "~/Content/MatrixTheme/js/jquery.flot.js",
                "~/Content/MatrixTheme/js/jquery.flot.resize.js",
                "~/Content/MatrixTheme/js/jquery.peity.js",
                "~/Content/MatrixTheme/js/fullcalendar.js",
-               "~/Content/MatrixTheme/js/matrix.js",
                "~/Content/MatrixTheme/js/matrix.dashboard.js",
                "~/Content/MatrixTheme/js/jquery.gritter.js",
                "~/Content/MatrixTheme/js/matrix.interface.js",
@@ -28,6 +26,11 @@ namespace Paragraff
 
             bundles.Add(new ScriptBundle("~/bundles/uniform").Include(
                "~/Content/MatrixTheme/js/jquery.uniform.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/matrix-main").Include(
+               "~/Content/MatrixTheme/js/matrix.js",
+               "~/Content/MatrixTheme/js/bootstrap.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/matrix-tables").Include(
