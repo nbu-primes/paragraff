@@ -28,7 +28,7 @@
                     <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
                     <li class="divider"></li>
                     <li>
-                        <a class="nav-link" href="@Url.Action("EditUser", "User")">
+                        <a class="nav-link" href="@Url.Action("EditUser", "User", new { area=""})">
                             <i class="icon icon-wrench"></i>Account Settings
                         </a>
                     </li>
@@ -53,21 +53,29 @@
             </li>
             }
             @*<li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>*@
+            @if (User.IsInRole("Admin"))
+            {
+            <li>
+                <a class="nav-link" href='@Url.Action("index","admin",new {area="Admin" })'>
+                    <i class="icon icon-fire"></i>Admin
+                </a>
+            </li>
+            }
             @if (User.Identity.IsAuthenticated)
             {
-                <li>
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
-                        <i class="icon-key"></i>Logout
-                    </a>
-                </li>
+            <li>
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="icon-key"></i>Logout
+                </a>
+            </li>
             }
             else
             {
-                <li>
-                    <a class="nav-link" href="@Url.Action("Login","Account", new {area="" })">
-                        <i class="icon icon-arrow-left"></i> Login
-                    </a>
-                </li>
+            <li>
+                <a class="nav-link" href="@Url.Action("Login","Account", new {area="" })">
+                    <i class="icon icon-arrow-left"></i> Login
+                </a>
+            </li>
             }
         </ul>
     </div>
@@ -173,8 +181,8 @@
                 <div class="modal-footer">
                     @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new {@class="inline" }))
                     {
-                        @Html.AntiForgeryToken();
-                        <input type="submit" class="btn btn-primary" value="Logout" />
+                    @Html.AntiForgeryToken();
+                    <input type="submit" class="btn btn-primary" value="Logout" />
                     }
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </div>
@@ -185,9 +193,8 @@
     <div class="chart"></div>
 
     <!--end-Footer-part-->
-
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/matrix-main") 
+    @Scripts.Render("~/bundles/matrix-main")
 
     @RenderSection("scripts", required: false)
 
