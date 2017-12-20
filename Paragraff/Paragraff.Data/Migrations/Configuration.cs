@@ -57,14 +57,25 @@ namespace Paragraff.Data.Migrations
             // add some categories
             if (!context.Categories.Any())
             {
-                var cats = new string[] { "drama", "action", "comdey" };
+                //var cats = new string[] { "drama", "action", "comdey" };
 
-                foreach (var c in cats)
+                //foreach (var c in cats)
+                //{
+                //    var newCat = new Category()
+                //    {
+                //        Id = Guid.NewGuid(),
+                //        CategoryName = c,
+                //        IsActive = true
+                //    };
+                //    context.Categories.Add(newCat);
+                //}
+
+                for (int i = 0; i < 50; i++)
                 {
                     var newCat = new Category()
                     {
                         Id = Guid.NewGuid(),
-                        CategoryName = c,
+                        CategoryName = i.ToString(),
                         IsActive = true
                     };
                     context.Categories.Add(newCat);

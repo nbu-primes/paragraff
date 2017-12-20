@@ -244,6 +244,7 @@
     <Content Include="Content\MatrixTheme\font-awesome\css\font-awesome.css" />
     <Content Include="Content\MatrixTheme\font\fontawesome-webfont.svg" />
     <Content Include="Content\MatrixTheme\img\breadcrumb.png" />
+    <Content Include="Content\MatrixTheme\img\Delete_Icon.png" />
     <Content Include="Content\MatrixTheme\img\glyphicons-halflings-white.png" />
     <Content Include="Content\MatrixTheme\img\gritter.png" />
     <Content Include="Content\MatrixTheme\img\hue.png" />

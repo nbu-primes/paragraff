@@ -34,7 +34,7 @@
                             <td>User</td>
                         }
                         <td>
-                            @Html.ActionLink("Edit", "EditUser", "User", new { area = ""}, new { @username = user.Username, @class = "btn" })
+                            @Html.ActionLink("Edit", "EditUser", "User", new { username = user.Username, area = ""}, new { @class = "btn" })
                             @if (user.IsActive)
                             {
                                 <button class="btn-danger">Deactivate</button>

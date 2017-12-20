@@ -16,7 +16,6 @@ namespace Paragraff
                "~/Content/MatrixTheme/js/jquery.peity.js",
                "~/Content/MatrixTheme/js/fullcalendar.js",
                "~/Content/MatrixTheme/js/matrix.dashboard.js",
-               "~/Content/MatrixTheme/js/jquery.gritter.js",
                "~/Content/MatrixTheme/js/matrix.interface.js",
                "~/Content/MatrixTheme/js/matrix.chat.js",
                "~/Content/MatrixTheme/js/matrix.form_validation.js",
@@ -26,6 +25,11 @@ namespace Paragraff
 
             bundles.Add(new ScriptBundle("~/bundles/uniform").Include(
                "~/Content/MatrixTheme/js/jquery.uniform.js"
+                ));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/gritter").Include(
+                "~/Content/MatrixTheme/js/jquery.gritter.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/matrix-main").Include(
@@ -47,6 +51,7 @@ namespace Paragraff
                 "~/Content/MatrixTheme/css/jquery*",
                 "~/Content/MatrixTheme/css/select2.css",
                 "~/Content/MatrixTheme/css/uniform.css",
+                "~/Content/MatrixTheme/css/jquery.gritter.css",
                 "~/Content/MatrixTheme/css/matrix-*"));
 
 
