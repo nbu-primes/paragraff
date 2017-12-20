@@ -1,20 +1,134 @@
-﻿
-@*@Html.Partial("_AdminDashboard")*@
+﻿@model IEnumerable<CategoryViewModel>
 
 <h2>EditCategories</h2>
 
 <br />
 
-<input type="text" id="text" placeholder="category" />
-<br>
-<span class="tag label label-info">
-    <span>Example Tag</span>
-    <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
-</span>
+@using (Ajax.BeginForm("MyAction", "MyController",
+                                                                new AjaxOptions
+                                                                {
+                                                                    HttpMethod = "POST",
+                                                                    InsertionMode = InsertionMode.Replace,
+                                                                    UpdateTargetId = "target"
+                                                                }, new { @id = "formfield" }))
+{
+    <input type="text" id="category-text" placeholder="category" />
+    <input type="button"
+           id="submit-category"
+           data-toggle="modal"
+           data-target="#confirm-submit"
+           class="btn btn-success" value="Add" />
+}
+
+<br />
+<br />
+
+@foreach (var category in Model)
+{
+    <span class="tag label label-info">
+        <span>@category.CategoryName</span>
+        @*<a><i id="@category.Id" class="remove-category remove icon-remove"></i></a>*@
+        @*@Ajax.RawActionLink(string.Format("<i id='@category.Id' class='remove-category remove icon-remove'></i>"), "DeleteCategory", "Category", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Post" }, new { @class = "" })*@
+        @using (Ajax.BeginForm("DeleteCategory", "Category", new { area = "Admin" },
+            new AjaxOptions
+            {
+                HttpMethod = "Post",
+                OnSuccess = "onSuccess",
+                OnFailure = "onFailure"
+            }))
+        {
+        @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-danger">
+                <i class="remove icon-remove"></i>
+            </button>
+        }
+
+        @using (Ajax.BeginForm("DeactivateCategory", "Category", new { area = "Admin" },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        OnSuccess = "onSuccess",
+                        OnFailure = "onFailure"
+                    }))
+        {
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-warning">
+                <i class="icon-lock"></i>
+            </button>
+        }
+    </span>
+}
+
+
+@*add category modal*@
+<div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Confirm Submit
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit the following details?
+                <!-- We display the details entered by the user here -->
+                <table class="table">
+                    <tr>
+                        <th>Category</th>
+                        <td id="category-text-preview"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a href="#" id="submit-cat-modal" class="btn btn-success success">Submit</a>
+            </div>
+        </div>
+    </div>
+</div>
+@*end add category modal*@
+
+@*remove category modal*@
+<div class="modal fade" id="removeCatModal" tabindex="-1" role="dialog" aria-labelledby="removeCatModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title inline" id="removeCatModalLabel">Are you sure ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select Delete below if you are sure to remove the current category.</div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("DeleteCategory", "Category", new { area = "Area" }, FormMethod.Post, new { @class = "inline" }))
+                {
+                    @Html.AntiForgeryToken();
+
+                    <input type="submit" class="btn btn-primary" value="Delete" />
+                }
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*end remove category modal*@
+
 
 <script>
     $(function () {
+        $('#submit-category').click(function () {
+            /* when the button in the form, display the entered values in the modal */
+            $('#category-text-preview').text($('#category-text').val());
+        });
 
+        $('#submit-cat-modal').click(function () {
+            /* when the submit button in the modal is clicked, submit the form */
+            alert('submitting');
+            $('#formfield').submit();
+        });
 
+        $(document).on('click', '.remove-category', function (event) {
+            let id = event.target.id;
+        });
     });
 </script>

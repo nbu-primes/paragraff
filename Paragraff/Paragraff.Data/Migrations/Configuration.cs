@@ -41,6 +41,7 @@ namespace Paragraff.Data.Migrations
             {
                 var admin = new User
                 {
+                    EmailConfirmed = true,
                     UserName = "test",
                     Email = "test@test.com"
                 };
@@ -51,6 +52,25 @@ namespace Paragraff.Data.Migrations
                 var userManager = new UserManager<User>(userStore);
                 userManager.Create(admin, password);
                 userManager.AddToRoles(admin.Id, new[] { "Admin" });
+            }
+
+            // add some categories
+            if (!context.Categories.Any())
+            {
+                var cats = new string[] { "drama", "action", "comdey" };
+
+                foreach (var c in cats)
+                {
+                    var newCat = new Category()
+                    {
+                        Id = Guid.NewGuid(),
+                        CategoryName = c,
+                        IsActive = true
+                    };
+                    context.Categories.Add(newCat);
+                }
+
+                context.SaveChanges();
             }
         }
     }

@@ -88,6 +88,10 @@ namespace Paragraff.App_Start
               .GetUserManager<ApplicationUserManager>());
 
             kernel.Bind<IAdminService>().To<AdminService>();
+
+            kernel.Bind<ICategoryService>()
+                .To<CategoryService>()
+                .InRequestScope();
         }
     }
 }
