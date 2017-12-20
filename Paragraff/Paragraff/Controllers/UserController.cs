@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paragraff.DataServices.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +10,18 @@ namespace Paragraff.Controllers
     [Authorize]
     public class UserController : Controller
     {
-        public ActionResult EditUser()
-        {
+        private readonly IAdminService adminService;
 
-            return this.View();
+        public UserController(IAdminService adminService)
+        {
+            this.adminService = adminService;
+        }
+
+        public ActionResult EditUser(string username)
+        {
+            var user = adminService.FindUserByUsername(username);
+
+            return this.View("EditUser", user);
         }
     }
 }

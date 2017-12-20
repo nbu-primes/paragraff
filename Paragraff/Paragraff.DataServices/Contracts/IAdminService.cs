@@ -11,5 +11,6 @@ namespace Paragraff.DataServices.Contracts
     public interface IAdminService
     {
         List<PublicUserViewModel> DisplayAllUsers();
+        EditUserViewModel FindUserByUsername(string username);
     }
 }
