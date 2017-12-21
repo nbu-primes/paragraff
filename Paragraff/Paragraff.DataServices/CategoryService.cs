@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Paragraff.ViewModels.CategoriesViewModels;
 using Paragraff.Data;
 using Paragraff.Data.Models;
+using Bytes2you.Validation;
 
 namespace Paragraff.DataServices
 {
@@ -19,9 +20,19 @@ namespace Paragraff.DataServices
             this.context = context;
         }
 
-        public void AddCategory(CategoryViewModel category)
+        public void AddCategory(string name)
         {
-            throw new NotImplementedException();
+            Guard.WhenArgument(name, "name").IsNullOrEmpty().Throw();
+
+            var category = new Category()
+            {
+                Id = Guid.NewGuid(),
+                CategoryName = name,
+                IsActive = true
+            };
+
+            this.context.Categories.Add(category);
+            this.context.SaveChanges();
         }
 
         public void DeactivateCategory(Guid categoryId)
@@ -50,6 +61,15 @@ namespace Paragraff.DataServices
                 .ToList();
 
             return allCategories;
+        }
+
+        public void ToggleActivity(Guid id)
+        {
+            var category = this.context.Categories.Single(c => c.Id == id);
+
+            category.IsActive = category.IsActive ? false : true;
+
+            this.context.SaveChanges();
         }
     }
 }

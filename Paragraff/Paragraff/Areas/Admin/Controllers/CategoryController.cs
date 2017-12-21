@@ -1,4 +1,5 @@
 ﻿using Bytes2you.Validation;
+using Paragraff.Data.Models;
 using Paragraff.DataServices.Contracts;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Paragraff.Areas.Admin.Controllers
 
             this.categoryService = categoryService;
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteCategory(Guid categoryId)
@@ -41,6 +42,39 @@ namespace Paragraff.Areas.Admin.Controllers
             {
                 success = true,
                 responseText = "Category was successfully deleted!"
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCategory(string name)
+        {
+            Guard.WhenArgument(name, "name").IsNullOrEmpty().Throw();
+
+            this.categoryService.AddCategory(name);
+
+            return this.RedirectToAction("EditCategories");
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ToggleActivity(Guid id)
+        {
+            try
+            {
+                this.categoryService.ToggleActivity(id);
+            }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    success = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new
+            {
+                success = true
             }, JsonRequestBehavior.AllowGet);
         }
 

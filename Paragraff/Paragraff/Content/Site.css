@@ -85,3 +85,7 @@ span.category-name{
     font-size: 16px;
     margin:12px;
 }
+
+button#add-category{
+    margin-top:-10px;
+}

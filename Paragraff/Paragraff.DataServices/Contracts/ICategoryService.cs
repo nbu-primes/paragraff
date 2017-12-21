@@ -12,6 +12,7 @@ namespace Paragraff.DataServices.Contracts
         List<CategoryViewModel> GetAllCategories();
         void DeleteCategory(Guid categoryId);
         void DeactivateCategory(Guid categoryId);
-        void AddCategory(CategoryViewModel category);
+        void AddCategory(string name);
+        void ToggleActivity(Guid id);
     }
 }

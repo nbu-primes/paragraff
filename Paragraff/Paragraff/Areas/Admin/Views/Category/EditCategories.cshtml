@@ -4,20 +4,19 @@
 
 <br />
 
-@using (Ajax.BeginForm("MyAction", "MyController",
-                                    new AjaxOptions
-                                    {
-                                        HttpMethod = "POST",
-                                        InsertionMode = InsertionMode.Replace,
-                                        UpdateTargetId = "target"
-                                    }, new { @id = "add-category-form" }))
+@using (Ajax.BeginForm("AddCategory", "Category", new { area = "Admin" },
+                        new AjaxOptions
+                        {
+                            HttpMethod = "POST",
+                            OnSuccess = "onAddCategorySuccess(data)"
+                        }, new { @id = "add-category-form" }))
 {
-    <input type="text" id="category-text" placeholder="category" />
-    <input type="button"
-           id="submit-category"
-           data-toggle="modal"
-           data-target="#confirm-add"
-           class="btn btn-success" value="Add" />
+    @Html.AntiForgeryToken()
+    <input type="text" name="name" id="category-text" placeholder="category" />
+
+    <button id="add-category" class="btn btn-success">
+        <i class="icon icon-plus"></i> Add
+    </button>
 }
 
 <br />
@@ -30,19 +29,19 @@
             <span class="category-name">@category.CategoryName</span>
             @*<a><i id="@category.Id" class="remove-category remove icon-remove"></i></a>*@
             @*@Ajax.RawActionLink(string.Format("<i id='@category.Id' class='remove-category remove icon-remove'></i>"), "DeleteCategory", "Category", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Post" }, new { @class = "" })*@
-            @using (Ajax.BeginForm("DeactivateCategory", "Category", new { area = "Admin" },
-                                new AjaxOptions
-                                {
-                                    HttpMethod = "Post",
-                                    OnSuccess = "onSuccess",
-                                    OnFailure = "onFailure"
-                                }, new { @id = "deactivate-category-form", @class = "inline" }))
+            @using (Ajax.BeginForm("ToggleActivity", "Category", new { area = "Admin", id = category.Id },
+                            new AjaxOptions
+                            {
+                                HttpMethod = "Post",
+                                OnSuccess = "onToggleActivitySuccess"
+                            }, new { @id = "deactivate-category-form", @class = "inline" }))
             {
                 @Html.AntiForgeryToken()
                 <input type="hidden" name="categoryId" value="@category.Id" />
 
-                <button type="submit" class="btn btn-warning">
-                    <i class="icon-book"></i>
+              
+                <button id="toggle-activity" data-activated="@(category.IsActive)" class="@(category.IsActive ? "btn btn-success" : "btn btn-warning")">
+                    <i class="@(category.IsActive ? "icon-check" : "icon-book")"></i>
                 </button>
             }
 
@@ -50,8 +49,7 @@
                             new AjaxOptions
                             {
                                 HttpMethod = "Post",
-                                OnSuccess = "onDeletionSuccess",
-                                OnFailure = "onDeletionFailure",
+                                OnSuccess = "onDeletionSuccess"
                             }, new { @id = "delete-category-form", @class = "inline" }))
             {
                 @Html.AntiForgeryToken()
@@ -68,30 +66,80 @@
 @Scripts.Render("~/bundles/gritter")
 
 <script>
-   
-
-    //$(document).on('click', '.remove-category', function (event) {
-    //    let id = event.target.id;
-    //});
-
     function onDeletionSuccess() {
         let el = $(this).parent();
+        console.log(el.children("span.category-name").html());
         let categoryName = el.children("span.category-name").html();
         $.gritter.add({
-            title: 'Success',
+            title: 'Removed',
             text: 'You have successfully deleted ' + categoryName.toUpperCase(),
             image: '../Content/MatrixTheme/img/Delete_Icon.png',
             sticky: false
         });
-        //console.log("deleted ", el.parent());
         el.remove();
     }
+    // toggle category activation client side instead of fetching the data form server
+    function onToggleActivitySuccess() {
+        let el = $(this);
+        let categoryName = el.siblings("span.category-name").html()
+        console.log(categoryName);
+        let btn = el.children("#toggle-activity");
+        let isActive = btn.attr("data-activated").toLowerCase() === 'true';
+        if (isActive) {
+            btn.attr("data-activated", "false")
+        } else {
+            btn.attr("data-activated", "true")
 
-    $(document).on("click", "#delete-category", function () {
-        if (confirm("Are you sure you want to delete this .. ?")) {
-            $("#delete-category-form").submit(); // Submitting the form if user clicks OK
         }
-        return false;
-    });
+
+        btn.toggleClass('btn-success');
+        btn.toggleClass('btn-warning');
+
+        btn.children("i").toggleClass('icon-check')
+        btn.children("i").toggleClass('icon-book')
+
+        $.gritter.add({
+            title: isActive ? 'Deactivated' : "Activated",
+            text: categoryName.toUpperCase() + (isActive ? ' was successfully deactivated' : ' was successfully activated'),
+            image: isActive ? '../Content/MatrixTheme/img/archive_icon.png' : '../Content/MatrixTheme/img/active_icon.png',
+            sticky: false,
+            class_name: 'orange-bg'
+        })
+    }
+
+    function onAddCategorySuccess(data) {
+        console.log(data);
+        $.gritter.add({
+            title: 'Added',
+            text: "Successfully added",
+            image: '../Content/MatrixTheme/img/Add_Icon.png',
+            sticky: false,
+            class_name: 'gritter-green'
+        });
+        $("#admin-container").html(data);
+
+        // after creation fetch the new categories
+        //$.get("category/editcategories", function (data) {
+        //    console.log("rdy");
+        //    $("#admin-container").html(data);
+        //});
+    }
+
+        //$("#add-category").off("click").on("click", function () {
+        //    let categoryToDelete = $(this).siblings("input#category-text").val();
+        //    if (confirm(`Are you sure you want to add ${categoryToDelete.toUpperCase()} ?`)) {
+        //        $("#add-category-form").submit(); // Submitting the form if user clicks OK
+        //    }
+        //    return false;
+
+        //});
+
+        //$("#delete-category").on("click", function () {
+        //    let categoryToDelete = $(this).parent().siblings("span.category-name").html();
+        //    if (confirm(`Are you sure you want to delete ${categoryToDelete.toUpperCase()} ?`)) {
+        //        $("#delete-category-form").submit(); // Submitting the form if user clicks OK
+        //    }
+        //    return false;
+        //})
 
 </script>

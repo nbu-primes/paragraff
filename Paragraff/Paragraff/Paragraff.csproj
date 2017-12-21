@@ -243,6 +243,9 @@
     <Content Include="Content\MatrixTheme\css\uniform.css" />
     <Content Include="Content\MatrixTheme\font-awesome\css\font-awesome.css" />
     <Content Include="Content\MatrixTheme\font\fontawesome-webfont.svg" />
+    <Content Include="Content\MatrixTheme\img\active_icon.png" />
+    <Content Include="Content\MatrixTheme\img\Add_Icon.png" />
+    <Content Include="Content\MatrixTheme\img\archive_icon.png" />
     <Content Include="Content\MatrixTheme\img\breadcrumb.png" />
     <Content Include="Content\MatrixTheme\img\Delete_Icon.png" />
     <Content Include="Content\MatrixTheme\img\glyphicons-halflings-white.png" />
