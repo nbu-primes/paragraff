@@ -10,5 +10,6 @@ namespace Paragraff.Services.Contracts
     public interface IFileConverter
     {
         byte[] PostedToByteArray(HttpPostedFileBase postedFile);
+        byte[] GetDefaultProfilePicture();
     }
 }

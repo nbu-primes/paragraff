@@ -13,6 +13,8 @@
         {
             @Html.AntiForgeryToken()
 
+            <img class="profile-picture"  src="@Url.Action("UserPhotos", "User" )" />
+
             <div class="control-group">
                 @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label", type = "file" })
                 <div class="col-md-10 span5">

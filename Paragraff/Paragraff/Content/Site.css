@@ -57,35 +57,43 @@ div#body-container {
     margin: 0 .1em;
 }
 
-.tag a {
-color: #bbb;
-cursor: pointer;
-opacity: 0.6;
-}
+    .tag a {
+        color: #bbb;
+        cursor: pointer;
+        opacity: 0.6;
+    }
 
-.tag a:hover {
-    opacity: 1.0
-}
+        .tag a:hover {
+            opacity: 1.0
+        }
 
-.tag .remove {
-vertical-align: bottom;
-top: 0;
-}
+    .tag .remove {
+        vertical-align: bottom;
+        top: 0;
+    }
 
-.tag a {
-margin: 0 0 0 .3em;
-}
+    .tag a {
+        margin: 0 0 0 .3em;
+    }
 
-.tag a .glyphicon-white {
-    color: #fff;
-    margin-bottom: 2px;
-}
+        .tag a .glyphicon-white {
+            color: #fff;
+            margin-bottom: 2px;
+        }
 
-span.category-name{
+span.category-name {
     font-size: 16px;
-    margin:12px;
+    margin: 12px;
 }
 
-button#add-category{
-    margin-top:-10px;
+button#add-category {
+    margin-top: -10px;
+}
+
+.profile-picture {
+    margin-left: 220px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 60px;
+    width: 60px;
 }

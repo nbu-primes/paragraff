@@ -27,7 +27,7 @@ namespace Paragraff.DataServices
         {
             Guard.WhenArgument(id, "id").IsNullOrEmpty().Throw();
 
-            var user = this.context.Users.Find(id);
+            var user = this.context.Users.First(u=> u.Id == id);
 
             user.About = data.About;
             user.FirstName = data.FirstName;
@@ -63,6 +63,20 @@ namespace Paragraff.DataServices
 
 
             return viewModel;
+        }
+
+        public ProfilePictureDto GetUserProfilePicture(string username)
+        {
+            Guard.WhenArgument(username, "username").IsNull().Throw();
+
+            var profilePicture = this.context.Users.Where(u => u.UserName == username)
+                .Select(u => new ProfilePictureDto()
+                {
+                    Data = u.ProfilePicture
+                })
+                .First();
+
+            return profilePicture;
         }
     }
 }

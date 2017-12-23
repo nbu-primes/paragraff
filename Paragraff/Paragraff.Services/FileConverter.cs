@@ -11,6 +11,22 @@ namespace Paragraff.Services
 {
     public class FileConverter : IFileConverter
     {
+        public byte[] GetDefaultProfilePicture()
+        {
+            string fileName = HttpContext.Current.Server.MapPath(@"~/Content/Images/no_profile.png");
+
+            byte[] imageData = null;
+
+            FileInfo fileInfo = new FileInfo(fileName);
+            long imageFileLength = fileInfo.Length;
+            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+
+            imageData = br.ReadBytes((int)imageFileLength);
+
+            return imageData;
+        }
+
         public byte[] PostedToByteArray(HttpPostedFileBase postedFile)
         {
             byte[] imageData = null;
@@ -22,5 +38,7 @@ namespace Paragraff.Services
             }
             return imageData;
         }
+
+
     }
 }

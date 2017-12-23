@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Paragraff.DataServices.Contracts;
 using Paragraff.Services.Contracts;
 using Paragraff.ViewModels.UserViewModels;
+using System.IO;
 using System.Web.Mvc;
 
 namespace Paragraff.Controllers
@@ -57,6 +58,30 @@ namespace Paragraff.Controllers
             var userViewModel = this.userService.FindUserByUsername(username);
 
             return this.View(userViewModel);
+        }
+
+        public FileContentResult UserPhotos()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string userId = this.User.Identity.GetUserId();
+
+                var username = this.User.Identity.Name;
+                var userImage = this.userService.GetUserProfilePicture(username).Data;
+                if (userImage == null)
+                {
+                    var defaultImage = this.fileConverter.GetDefaultProfilePicture();
+
+                    return this.File(defaultImage, "image/png");
+                }
+
+                return new FileContentResult(userImage, "image/jpeg");
+            }
+            else
+            {
+                var defaultImage = this.fileConverter.GetDefaultProfilePicture();
+                return this.File(defaultImage, "image/png");
+            }
         }
     }
 }
