@@ -5,10 +5,26 @@
     <div class="quick-actions_homepage">
         <ul class="quick-actions">
             <li class="bg_lg span3">
-                @Ajax.RawActionLink(string.Format("<i class='icon-pencil'></i>Categories"), "EditCategories", "Category", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "admin-container", LoadingElementId = "target-div" }, new { @class = "" })
+                @Ajax.RawActionLink(string.Format("<i class='icon-pencil'></i>Categories"), "EditCategories", "Category", new { area = "Admin" },
+               new AjaxOptions
+               {
+                   HttpMethod = "Get",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "admin-container",
+                   LoadingElementId = "progress-div"
+               },
+               new { @class = "" })
             </li>
             <li class="bg_lb">
-                @Ajax.RawActionLink(string.Format("<i class='icon-user'></i>Users"), "AllUsers", "Admin", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "admin-container", LoadingElementId = "target-div" }, new { @class = "" })
+                @Ajax.RawActionLink(string.Format("<i class='icon-user'></i>Users"), "AllUsers", "Admin", new { area = "Admin" },
+               new AjaxOptions
+               {
+                   HttpMethod = "Get",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "admin-container",
+                   LoadingElementId = "progress-div"
+               },
+               new { @class = "" })
             </li>
             <li class="bg_lo"> <a href="tables.html"> <i class="icon-th"></i> Tables</a> </li>
             <li class="bg_ls"> <a href="grid.html"> <i class="icon-fullscreen"></i> Full width</a> </li>
@@ -23,11 +39,19 @@
     <!--End-Action boxes-->
 </div>
 
-<h3>admin home</h3>
-<div id="admin-container">
-
+<div id="progress-div">
+    <div class="center">
+        <img src="~/Content/Animations/loading.gif" alt="" />
+    </div>
 </div>
 
-@section scripts{
+<div id="admin-container"></div>
 
+@section scripts{
+    <script>
+        $("ul.quick-actions a").on("click", function () {
+            console.log("clicked");
+            $("#admin-container").html("");
+        })
+    </script>
 }

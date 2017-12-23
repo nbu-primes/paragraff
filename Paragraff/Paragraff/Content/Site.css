@@ -97,3 +97,19 @@ button#add-category {
     height: 60px;
     width: 60px;
 }
+.center {
+    z-index: 1000;
+    margin: 50px auto;
+    padding: 10px;
+    width: 130px;
+    opacity: 1;
+}
+
+.centerimg {
+    height: 128px;
+    width: 128px;
+}
+
+#progress-div{
+    display:none;
+}
