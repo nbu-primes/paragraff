@@ -1,5 +1,4 @@
-﻿using Paragraff.Data.Models;
-using Paragraff.ViewModels.UserViewModels;
+﻿using Paragraff.ViewModels.UserViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Paragraff.DataServices.Contracts
 {
-    public interface IAdminService
+    public interface IUserService
     {
-        List<PublicUserViewModel> DisplayAllUsers();
+        EditUserViewModel FindUserByUsername(string username);
     }
 }

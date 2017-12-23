@@ -92,6 +92,10 @@ namespace Paragraff.App_Start
             kernel.Bind<ICategoryService>()
                 .To<CategoryService>()
                 .InRequestScope();
+
+            kernel.Bind<IUserService>()
+                .To<UserService>()
+                .InRequestScope();
         }
     }
 }

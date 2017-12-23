@@ -1,7 +1,10 @@
-﻿using Paragraff.DataServices.Contracts;
+﻿using Bytes2you.Validation;
+using Microsoft.AspNet.Identity;
+using Paragraff.DataServices.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,18 +13,21 @@ namespace Paragraff.Controllers
     [Authorize]
     public class UserController : Controller
     {
-        private readonly IAdminService adminService;
+        private readonly IUserService userService;
 
-        public UserController(IAdminService adminService)
+        public UserController(IUserService userService)
         {
-            this.adminService = adminService;
+            Guard.WhenArgument(userService, "userService").IsNull().Throw();
+
+            this.userService = userService;
         }
 
-        public ActionResult EditUser(string username)
+        public ActionResult EditUser()
         {
-            var user = adminService.FindUserByUsername(username);
+            var username = this.HttpContext.User.Identity.Name;
+            var userViewModel = this.userService.FindUserByUsername(username);
 
-            return this.View("EditUser", user);
+            return this.View(userViewModel);
         }
     }
 }

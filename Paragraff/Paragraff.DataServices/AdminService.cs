@@ -39,23 +39,7 @@ namespace Paragraff.DataServices
 
             return allUsers;
         }
-
-        public EditUserViewModel FindUserByUsername(string username)
-        {
-            var user = this.dbContext.Users.FirstOrDefault(u => u.UserName == username);
-
-            var viewModel = new EditUserViewModel()
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                About = user.About,
-                Email = user.Email,
-                Gender = user.Gender,
-                Location = user.Location,
-                ProfilePicture = user.ProfilePicture
-            };
-
-            return viewModel;
-        }
+        
+        
     }
 }
