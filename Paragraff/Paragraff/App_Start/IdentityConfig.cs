@@ -46,6 +46,7 @@ namespace Paragraff
                        );
 
             //var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            SendGridClient client = null;
 
             // Send the email.
             if (client != null)
