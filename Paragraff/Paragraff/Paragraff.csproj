@@ -440,6 +440,10 @@
       <Project>{0696390C-4904-4FF6-BFEE-022F04AE2CA1}</Project>
       <Name>Paragraff.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Paragraff.Services\Paragraff.Services.csproj">
+      <Project>{E107BBA6-CC28-4A03-94CD-B7B4CE794758}</Project>
+      <Name>Paragraff.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Paragraff.ViewModels\Paragraff.ViewModels.csproj">
       <Project>{26CA5E76-5C7E-4BC6-90E9-FAD12333FB16}</Project>
       <Name>Paragraff.ViewModels</Name>

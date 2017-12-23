@@ -1,11 +1,8 @@
 ﻿using Bytes2you.Validation;
 using Microsoft.AspNet.Identity;
 using Paragraff.DataServices.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+using Paragraff.Services.Contracts;
+using Paragraff.ViewModels.UserViewModels;
 using System.Web.Mvc;
 
 namespace Paragraff.Controllers
@@ -14,12 +11,44 @@ namespace Paragraff.Controllers
     public class UserController : Controller
     {
         private readonly IUserService userService;
+        private readonly IFileConverter fileConverter;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IFileConverter fileConverter)
         {
             Guard.WhenArgument(userService, "userService").IsNull().Throw();
+            Guard.WhenArgument(fileConverter, "fileConverter").IsNull().Throw();
 
             this.userService = userService;
+            this.fileConverter = fileConverter;
+        }
+
+        // Exclude the file, because it tries to parse it automatically, do i manually instead.
+        // https://social.technet.microsoft.com/wiki/contents/articles/34445.mvc-asp-net-identity-customizing-for-adding-profile-image.aspx
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditUser([Bind(Exclude = "ProfilePicture")]EditUserViewModel userVm)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Request.Files.Count > 0)
+                {
+                    var profilePicture = this.Request.Files["ProfilePicture"];
+
+                    // if there is no uploaded image on next editing, dont remove the previous one
+                    if (profilePicture.ContentLength > 0)
+                    {
+                        var imgData = this.fileConverter.PostedToByteArray(profilePicture);
+
+                        userVm.ProfilePicture = imgData;
+                    }
+                }
+                var id = this.User.Identity.GetUserId();
+                this.userService.EditUser(id, userVm);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return this.View();
         }
 
         public ActionResult EditUser()

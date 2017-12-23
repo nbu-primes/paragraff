@@ -16,6 +16,8 @@ namespace Paragraff.App_Start
     using Microsoft.AspNet.Identity;
     using Paragraff.DataServices.Contracts;
     using Paragraff.DataServices;
+    using Paragraff.Services.Contracts;
+    using Paragraff.Services;
 
     public static class NinjectWebCommon
     {
@@ -95,6 +97,10 @@ namespace Paragraff.App_Start
 
             kernel.Bind<IUserService>()
                 .To<UserService>()
+                .InRequestScope();
+
+            kernel.Bind<IFileConverter>()
+                .To<FileConverter>()
                 .InRequestScope();
         }
     }

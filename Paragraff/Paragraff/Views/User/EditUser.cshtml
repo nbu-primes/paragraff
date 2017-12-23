@@ -9,12 +9,15 @@
         <h5>Personal-info</h5>
     </div>
     <div class="widget-content nopadding">
-        <form action="#" method="get" class="form-horizontal">
+        @using (Html.BeginForm("EditUser", "User", new { area = "" }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
             <div class="control-group">
-                @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label", type = "file" })
                 <div class="col-md-10 span5">
                     <label class="custom-file-upload">
-                        <input type="file" class="no-input" />
+                        <input type="file" name="ProfilePicture" class="no-input" />
                         <i class="icon icon-picture"></i> Upload
                     </label>
 
@@ -75,6 +78,6 @@
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Save</button>
             </div>
-        </form>
+        }
     </div>
 </div>

@@ -9,6 +9,7 @@ namespace Paragraff.DataServices.Contracts
 {
     public interface IUserService
     {
-        EditUserViewModel FindUserByUsername(string username);
+        EditUserViewModel FindUserByUsername(string id);
+        void EditUser(string username, EditUserViewModel data);
     }
 }
