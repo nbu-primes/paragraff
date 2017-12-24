@@ -23,6 +23,9 @@ namespace Paragraff.Data.Models
         [Required]
         public string PublisherId { get; set; }
 
+        /// <summary>
+        /// The creator of the post.
+        /// </summary>
         public virtual User Publisher { get; set; }
 
         public string TradedWithId { get; set; }

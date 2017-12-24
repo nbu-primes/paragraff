@@ -9,10 +9,10 @@ namespace Paragraff.DataServices.Contracts
 {
     public interface ICategoryService
     {
-        List<CategoryViewModel> GetAllCategories();
+        IEnumerable<CategoryViewModel> GetAllCategories();
         void DeleteCategory(Guid categoryId);
-        void DeactivateCategory(Guid categoryId);
         void AddCategory(string name);
         void ToggleActivity(Guid id);
+
     }
 }

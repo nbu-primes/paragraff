@@ -30,6 +30,9 @@ namespace Paragraff.Data.Models
         
         public DateTime PublishedOn { get; set; }
 
+        /// <summary>
+        /// Who published the book
+        /// </summary>
         [Required]
         public string Publisher { get; set; }
         

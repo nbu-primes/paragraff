@@ -1,0 +1,110 @@
+﻿@model NewPostViewModel
+
+
+<h2>NewPost</h2>
+<head>
+    @Styles.Render("~/bundles/datepicker-css")
+</head>
+
+<div class="widget-box">
+    <div class="widget-title">
+        <span class="icon"> <i class="icon-pencil"></i> </span>
+        <h5>Create a post</h5>
+    </div>
+    <div class="widget-content nopadding">
+        @using (Html.BeginForm("CreatePost", "Post", new { area = "" },
+                FormMethod.Post, new { @id = "form-wizard", @class = "form-horizontal" }))
+        {
+            <div id="form-wizard-1" class="step">
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Book.Author, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Book.Author)
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Book.Author, "", new { @class = "validation-msg" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Book.Title, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Book.Title)
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Book.Title, "", new { @class = "validation-msg" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Book.Category, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.DropDownListFor(m => m.Book.Category,
+                                               Model.Book.Categories, "- Select Genre -",
+                                               new { @class = "form-control" })
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Book.Category, "", new { @class = "validation-msg" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Book.Publisher, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Book.Publisher)
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Book.Publisher, "", new { @class = "validation-msg" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="icon icon-calendar"></span>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <div id="form-wizard-2" class="step">
+                <div class="control-group">
+                    <label class="control-label">Email</label>
+                    <div class="controls">
+                        <input id="email" type="text" name="email" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">EULA</label>
+                    <div class="controls">
+                        <input id="eula" type="checkbox" name="eula" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <input id="back" class="btn btn-primary" type="reset" value="Back" />
+                <input id="next" class="btn btn-primary" type="submit" value="Next" />
+                <div id="status"></div>
+            </div>
+            <div id="submitted"></div>
+        }
+    </div>
+</div>
+
+@section scripts{
+
+    <script>
+
+        $(function () {
+
+            $('#datetimepicker1').datetimepicker({
+                widgetPositioning: {
+                    horizontal: 'auto',
+                    vertical: 'auto'
+                },
+                allowInputToggle: true,
+                icons: {
+                    up: 'icon icon-upload',
+                    down: 'icon icon-download',
+                    previous: 'icon icon-arrow-left',
+                    next: 'icon icon-arrow-right',
+                }
+            });
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/datepicker-js")
+}

@@ -21,7 +21,17 @@ namespace Paragraff
                "~/Content/MatrixTheme/js/matrix.form_validation.js",
                "~/Content/MatrixTheme/js/jquery.wizard.js",
                "~/Content/MatrixTheme/js/select2.js",
+               "~/Content/MatrixTheme/js/matrix.wizard.js",
                "~/Content/MatrixTheme/js/matrix.popover.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datepicker-js").Include(
+              "~/Scripts/moment.js",
+              "~/Scripts/bootstrap-datetimepicker.js"
+               ));
+
+            bundles.Add(new StyleBundle("~/bundles/datepicker-css").Include(
+                "~/Content/bootstrap-datetimepicker.css"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/uniform").Include(
                "~/Content/MatrixTheme/js/jquery.uniform.js"

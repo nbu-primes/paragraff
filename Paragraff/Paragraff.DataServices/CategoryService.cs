@@ -34,12 +34,7 @@ namespace Paragraff.DataServices
             this.context.Categories.Add(category);
             this.context.SaveChanges();
         }
-
-        public void DeactivateCategory(Guid categoryId)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void DeleteCategory(Guid categoryId)
         {
             Category category = new Category() { Id = categoryId };
@@ -49,7 +44,7 @@ namespace Paragraff.DataServices
             this.context.SaveChanges();
         }
 
-        public List<CategoryViewModel> GetAllCategories()
+        public IEnumerable<CategoryViewModel> GetAllCategories()
         {
             var allCategories = this.context.Categories
                 .Select(c => new CategoryViewModel()
