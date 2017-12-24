@@ -97,6 +97,7 @@ button#add-category {
     height: 60px;
     width: 60px;
 }
+
 .center {
     z-index: 1000;
     margin: 50px auto;
@@ -110,6 +111,14 @@ button#add-category {
     width: 128px;
 }
 
-#progress-div{
-    display:none;
+#progress-div {
+    display: none;
+}
+
+#published-on {
+    margin-left: 110px;
+}
+
+#published-on label {
+    display: inline-block;
 }

@@ -1,5 +1,6 @@
 ﻿using Bytes2you.Validation;
 using Paragraff.DataServices.Contracts;
+using Paragraff.Services.Contracts;
 using Paragraff.ViewModels.BookViewModels;
 using Paragraff.ViewModels.PostViewModels;
 using System;
@@ -10,18 +11,24 @@ using System.Web.Mvc;
 
 namespace Paragraff.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private readonly ICategoryService categoryService;
+        private readonly IPostService postService;
+        private readonly IFileConverter fileConverter;
 
-        public PostController(ICategoryService categoryService)
+        public PostController(ICategoryService categoryService,IPostService postService, IFileConverter fileConverter)
         {
             Guard.WhenArgument(categoryService, "categoryServuce").IsNull().Throw();
+            Guard.WhenArgument(postService, "postService").IsNull().Throw();
+            Guard.WhenArgument(fileConverter, "fileConverter").IsNull().Throw();
 
             this.categoryService = categoryService;
+            this.postService = postService;
+            this.fileConverter = fileConverter;
         }
-
-
+        
         public ActionResult NewPost()
         {
             var allCategories = this.categoryService.GetAllCategories();
@@ -29,16 +36,20 @@ namespace Paragraff.Controllers
 
             var states = this.GetSelectListItems(statesAsStr);
 
-            var bookVm = new NewBookViewModel()
+            var postVm = (NewPostViewModel)this.TempData["reSubmit"];
+            if (postVm == null)
             {
-                Categories = states
-            };
+                var bookVm = new NewBookViewModel()
+                {
+                    PublishedOn = DateTime.Now
+                };
 
-            var postVm = new NewPostViewModel()
-            {
-                Book = bookVm
-            };
-
+                postVm = new NewPostViewModel()
+                {
+                    Book = bookVm
+                };
+            }
+            postVm.Book.Categories = states;
             return this.View(postVm);
         }
 
@@ -46,7 +57,22 @@ namespace Paragraff.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(NewPostViewModel postVm)
         {
-            return this.RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                if (Request.Files.Count > 0)
+                {
+                    var profilePicture = this.Request.Files["Book.Image"];
+
+                    if (profilePicture.ContentLength > 0)
+                    {
+                        postVm.Book.Image = profilePicture;
+                    }
+                }
+                this.postService.CreatePost(postVm);
+                return this.RedirectToAction("Index", "Home");
+            }
+            this.TempData["reSubmit"] = postVm;
+            return this.RedirectToAction("NewPost", postVm);
         }
 
         private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)

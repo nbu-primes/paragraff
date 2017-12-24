@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Paragraff.ViewModels.CustomValidations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 
@@ -21,11 +23,13 @@ namespace Paragraff.ViewModels.BookViewModels
         [Required]
         [StringLength(100, MinimumLength = 1)]
         public string Publisher { get; set; }
-        
-        public DateTime PublishedOn { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:DD/MM/YYYY}")]
+        public DateTime PublishedOn { get; set; }
+        
         [Required]
-        public byte[] Image { get; set; }
+        [ImageNotNull]
+        public HttpPostedFileBase Image { get; set; }
 
         [Required]
         public string Category { get; set; }

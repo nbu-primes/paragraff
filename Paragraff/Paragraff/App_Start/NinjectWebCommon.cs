@@ -102,6 +102,10 @@ namespace Paragraff.App_Start
             kernel.Bind<IFileConverter>()
                 .To<FileConverter>()
                 .InRequestScope();
+
+            kernel.Bind<IPostService>()
+                .To<PostService>()
+                .InRequestScope();
         }
     }
 }

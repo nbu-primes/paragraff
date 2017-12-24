@@ -1,6 +1,5 @@
 ﻿@model NewPostViewModel
 
-
 <h2>NewPost</h2>
 <head>
     @Styles.Render("~/bundles/datepicker-css")
@@ -13,8 +12,13 @@
     </div>
     <div class="widget-content nopadding">
         @using (Html.BeginForm("CreatePost", "Post", new { area = "" },
-                FormMethod.Post, new { @id = "form-wizard", @class = "form-horizontal" }))
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data", @id = "form-wizard", @class = "form-horizontal" }))
         {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+
             <div id="form-wizard-1" class="step">
                 <div class="control-group">
                     @Html.LabelFor(m => m.Book.Author, new { @class = "control-label" })
@@ -51,26 +55,50 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" />
+                    <div class='input-group date controls' id='published-on'>
+                        @Html.LabelFor(m => m.Book.PublishedOn, "Published On")
+                        @Html.EditorFor(m => m.Book.PublishedOn)
                         <span class="input-group-addon">
                             <span class="icon icon-calendar"></span>
                         </span>
                     </div>
-
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Book.Image, new { @class = "col-md-2 control-label", type = "file" })
+                    <div class="col-md-10 span5 controls">
+                        <label class="custom-file-upload">
+                            @Html.TextBoxFor(m => m.Book.Image, new { type = "file", @class = "no-input" })
+                            @*<input type="file" name="Book.Image" class="no-input" />*@
+                            <i class="icon icon-picture"></i> Change
+                        </label>
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Book.Image, "", new { @class = "validation-msg" })
+                    </div>
                 </div>
             </div>
             <div id="form-wizard-2" class="step">
                 <div class="control-group">
-                    <label class="control-label">Email</label>
+                    @Html.LabelFor(m => m.Description, new { @class = "control-label" })
                     <div class="controls">
-                        <input id="email" type="text" name="email" />
+                        @Html.EditorFor(m => m.Description)
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "validation-msg" })
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">EULA</label>
+                    @Html.LabelFor(m => m.Price, new { @class = "control-label" })
                     <div class="controls">
-                        <input id="eula" type="checkbox" name="eula" />
+                        @Html.EditorFor(m => m.Price)
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "validation-msg" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    @Html.LabelFor(m => m.Rating, new { @class = "control-label" })
+                    <div class="controls">
+                        @Html.EditorFor(m => m.Rating)
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "validation-msg" })
                     </div>
                 </div>
             </div>
@@ -85,24 +113,29 @@
 </div>
 
 @section scripts{
-
     <script>
-
         $(function () {
+            const dateFormat = "DD/MM/YYYY";
 
-            $('#datetimepicker1').datetimepicker({
+            $.validator.methods.date = function (value, element) {
+                return this.optional(element) || moment(value, dateFormat, true).isValid();
+            }
+
+            let config = {
+                format: dateFormat,
                 widgetPositioning: {
                     horizontal: 'auto',
                     vertical: 'auto'
                 },
-                allowInputToggle: true,
+                allowInputToggle: false,
                 icons: {
                     up: 'icon icon-upload',
                     down: 'icon icon-download',
                     previous: 'icon icon-arrow-left',
                     next: 'icon icon-arrow-right',
                 }
-            });
+            };
+            $('#published-on').datetimepicker(config);
         });
     </script>
 
