@@ -68,12 +68,11 @@
 <script>
     function onDeletionSuccess() {
         let el = $(this).parent();
-        console.log(el.children("span.category-name").html());
         let categoryName = el.children("span.category-name").html();
         $.gritter.add({
             title: 'Removed',
             text: 'You have successfully deleted ' + categoryName.toUpperCase(),
-            image: '../Content/MatrixTheme/img/Delete_Icon.png',
+            image: '@Url.Content("~/Content/MatrixTheme/img/Delete_Icon.png")',
             sticky: false
         });
         el.remove();
@@ -81,8 +80,7 @@
     // toggle category activation client side instead of fetching the data form server
     function onToggleActivitySuccess() {
         let el = $(this);
-        let categoryName = el.siblings("span.category-name").html()
-        console.log(categoryName);
+        let categoryName = el.siblings("span.category-name").html();
         let btn = el.children("#toggle-activity");
         let isActive = btn.attr("data-activated").toLowerCase() === 'true';
         if (isActive) {
@@ -101,18 +99,17 @@
         $.gritter.add({
             title: isActive ? 'Deactivated' : "Activated",
             text: categoryName.toUpperCase() + (isActive ? ' was successfully deactivated' : ' was successfully activated'),
-            image: isActive ? '../Content/MatrixTheme/img/archive_icon.png' : '../Content/MatrixTheme/img/active_icon.png',
+            image: isActive ? '@Url.Content("~/Content/MatrixTheme/img/archive_icon.png")' : '@Url.Content("~/Content/MatrixTheme/img/active_icon.png")',
             sticky: false,
             class_name: 'orange-bg'
         })
     }
 
     function onAddCategorySuccess(data) {
-        console.log(data);
         $.gritter.add({
             title: 'Added',
             text: "Successfully added",
-            image: '../Content/MatrixTheme/img/Add_Icon.png',
+            image: '@Url.Content("~/Content/MatrixTheme/img/Add_Icon.png")',
             sticky: false,
             class_name: 'gritter-green'
         });
