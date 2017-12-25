@@ -62,6 +62,16 @@ namespace Paragraff.DataServices
                 Price = postVm.Price
             };
 
+            var publisherRating = new PostRating()
+            {
+                Id = Guid.NewGuid(),
+                Post = post,
+                Rating = postVm.Rating,
+                UserId = userId
+            };
+
+            post.PostRatings.Add(publisherRating);
+
             this.context.Posts.Add(post);
             this.context.SaveChanges();
         }

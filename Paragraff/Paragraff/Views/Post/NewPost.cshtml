@@ -80,6 +80,7 @@
                 <div class="control-group">
                     @Html.LabelFor(m => m.Description, new { @class = "control-label" })
                     <div class="controls">
+                        <span class="fa fa-pencil"></span>
                         @Html.EditorFor(m => m.Description)
                         <br />
                         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "validation-msg" })
@@ -88,6 +89,7 @@
                 <div class="control-group">
                     @Html.LabelFor(m => m.Price, new { @class = "control-label" })
                     <div class="controls">
+                        <span class="fa fa-eur" style="color:dodgerblue"></span>
                         @Html.EditorFor(m => m.Price)
                         <br />
                         @Html.ValidationMessageFor(m => m.Price, "", new { @class = "validation-msg" })
@@ -96,7 +98,8 @@
                 <div class="control-group">
                     @Html.LabelFor(m => m.Rating, new { @class = "control-label" })
                     <div class="controls">
-                        @Html.EditorFor(m => m.Rating)
+                        <span class="icon icon-star" style="color:goldenrod"></span>
+                        @Html.DropDownListFor(m => m.Rating, new SelectList(Enumerable.Range(1, 10)))
                         <br />
                         @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "validation-msg" })
                     </div>

@@ -16,8 +16,10 @@ namespace Paragraff.ViewModels.PostViewModels
         [StringLength(200, MinimumLength = 5)]
         public string Description { get; set; }
         
+        [Range(0, double.PositiveInfinity)]
         public decimal Price { get; set; }
 
+        [Range(1,10)]
         public int Rating { get; set; }
     }
 }

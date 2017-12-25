@@ -20,62 +20,62 @@
         <ul class="nav">
             @if (User.Identity.IsAuthenticated)
             {
-            <li class="dropdown" id="profile-messages">
-                <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome @User.Identity.Name</span><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-                    @*<li class="divider"></li>*@
-                    <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="nav-link" href="@Url.Action("EditUser", "User", new { area=""})">
-                            <i class="icon icon-wrench"></i>Account Settings
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
-                            <i class="icon icon-share-alt"></i>Logout
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown" id="menu-messages">
-                <a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a class="sAdd" title="" href="#"><i class="icon-plus"></i> new message</a></li>
-                    <li class="divider"></li>
-                    <li><a class="sInbox" title="" href="#"><i class="icon-envelope"></i> inbox</a></li>
-                    <li class="divider"></li>
-                    <li><a class="sOutbox" title="" href="#"><i class="icon-arrow-up"></i> outbox</a></li>
-                    <li class="divider"></li>
-                    <li><a class="sTrash" title="" href="#"><i class="icon-trash"></i> trash</a></li>
-                </ul>
-            </li>
+                <li class="dropdown" id="profile-messages">
+                    <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome @User.Identity.Name</span><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
+                        @*<li class="divider"></li>*@
+                        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="nav-link" href="@Url.Action("EditUser", "User", new { area=""})">
+                                <i class="icon icon-wrench"></i>Account Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="icon icon-share-alt"></i>Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown" id="menu-messages">
+                    <a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="sAdd" title="" href="#"><i class="icon-plus"></i> new message</a></li>
+                        <li class="divider"></li>
+                        <li><a class="sInbox" title="" href="#"><i class="icon-envelope"></i> inbox</a></li>
+                        <li class="divider"></li>
+                        <li><a class="sOutbox" title="" href="#"><i class="icon-arrow-up"></i> outbox</a></li>
+                        <li class="divider"></li>
+                        <li><a class="sTrash" title="" href="#"><i class="icon-trash"></i> trash</a></li>
+                    </ul>
+                </li>
             }
             @*<li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>*@
             @if (User.IsInRole("Admin"))
             {
-            <li>
-                <a class="nav-link" href='@Url.Action("index","admin",new {area="Admin" })'>
-                    <i class="icon icon-fire"></i>Admin
-                </a>
-            </li>
+                <li>
+                    <a class="nav-link" href='@Url.Action("index","admin",new {area="Admin" })'>
+                        <i class="icon icon-fire"></i>Admin
+                    </a>
+                </li>
             }
             @if (User.Identity.IsAuthenticated)
             {
-            <li>
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="icon-key"></i>Logout
-                </a>
-            </li>
+                <li>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="icon-key"></i>Logout
+                    </a>
+                </li>
             }
             else
             {
-            <li>
-                <a class="nav-link" href="@Url.Action("Login","Account", new {area="" })">
-                    <i class="icon icon-arrow-left"></i> Login
-                </a>
-            </li>
+                <li>
+                    <a class="nav-link" href="@Url.Action("Login","Account", new {area="" })">
+                        <i class="icon icon-arrow-left"></i> Login
+                    </a>
+                </li>
             }
         </ul>
     </div>
@@ -179,30 +179,30 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new {@class="inline" }))
+                    @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { @class = "inline" }))
                     {
-                    @Html.AntiForgeryToken();
-                    <input type="submit" class="btn btn-primary" value="Logout" />
+                        @Html.AntiForgeryToken();
+                        <input type="submit" class="btn btn-primary" value="Logout" />
                     }
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="chart"></div>
 
     <!--end-Footer-part-->
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/matrix-main")
     @Scripts.Render("~/bundles/jquery-ajax")
     @Scripts.Render("~/bundles/jqueryval");
     @Scripts.Render("~/bundles/matrix-theme-js");
 
+    @* always keep it below other scripts ! *@
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">
-
         // This function is called from the pop-up menus to transfer to
         // a different page. Ignore if the value returned is a null string:
         function goPage(newURL) {
@@ -227,7 +227,6 @@
         }
 
         $('.ajax-logout').prepend('<i class="icon icon-share-alt"></i>');
-
     </script>
 
 </body>
