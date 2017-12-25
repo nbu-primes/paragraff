@@ -126,6 +126,10 @@
     <Compile Include="Migrations\201712151608397_additional-user-fields.Designer.cs">
       <DependentUpon>201712151608397_additional-user-fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712251739403_post-tradedWith-optional.cs" />
+    <Compile Include="Migrations\201712251739403_post-tradedWith-optional.Designer.cs">
+      <DependentUpon>201712251739403_post-tradedWith-optional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
@@ -195,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712151608397_additional-user-fields.resx">
       <DependentUpon>201712151608397_additional-user-fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712251739403_post-tradedWith-optional.resx">
+      <DependentUpon>201712251739403_post-tradedWith-optional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

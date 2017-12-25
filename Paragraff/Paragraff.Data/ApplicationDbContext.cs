@@ -35,11 +35,15 @@ namespace Paragraff.Data
                 .WithRequired(p => p.Publisher)
                 .HasForeignKey(p => p.PublisherId);
 
+
+            // should be optional
+            // https://stackoverflow.com/a/29514803/4990859
+
             modelBuilder.Entity<User>()
                 .HasMany<Post>(u => u.Trades)
-                .WithRequired(p => p.TradedWith)
+                .WithOptional(p => p.TradedWith)
                 .HasForeignKey(p => p.TradedWithId);
-
+            
         }
 
         public IDbSet<Book> Books { get; set; }
@@ -55,9 +59,5 @@ namespace Paragraff.Data
         public IDbSet<Comment> Comments { get; set; }
 
         public IDbSet<Message> Messages { get; set; }
-
-        
-
-
     }
 }

@@ -48,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +71,10 @@
     <ProjectReference Include="..\Paragraff.Data\Paragraff.Data.csproj">
       <Project>{0696390c-4904-4ff6-bfee-022f04ae2ca1}</Project>
       <Name>Paragraff.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Paragraff.Services\Paragraff.Services.csproj">
+      <Project>{E107BBA6-CC28-4A03-94CD-B7B4CE794758}</Project>
+      <Name>Paragraff.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Paragraff.ViewModels\Paragraff.ViewModels.csproj">
       <Project>{26ca5e76-5c7e-4bc6-90e9-fad12333fb16}</Project>

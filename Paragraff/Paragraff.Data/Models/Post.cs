@@ -28,6 +28,8 @@ namespace Paragraff.Data.Models
         /// </summary>
         public virtual User Publisher { get; set; }
 
+        // should be optional
+        //https://stackoverflow.com/a/29514803/4990859
         public string TradedWithId { get; set; }
 
         public virtual User TradedWith { get; set; }

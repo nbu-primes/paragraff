@@ -1,7 +1,9 @@
 ﻿using Bytes2you.Validation;
+using Microsoft.AspNet.Identity;
 using Paragraff.DataServices.Contracts;
 using Paragraff.Services.Contracts;
 using Paragraff.ViewModels.BookViewModels;
+using Paragraff.ViewModels.CategoriesViewModels;
 using Paragraff.ViewModels.PostViewModels;
 using System;
 using System.Collections.Generic;
@@ -32,9 +34,8 @@ namespace Paragraff.Controllers
         public ActionResult NewPost()
         {
             var allCategories = this.categoryService.GetAllCategories();
-            var statesAsStr = allCategories.Select(c => c.CategoryName);
 
-            var states = this.GetSelectListItems(statesAsStr);
+            var states = this.GetSelectListItems(allCategories);
 
             var postVm = (NewPostViewModel)this.TempData["reSubmit"];
             if (postVm == null)
@@ -68,14 +69,17 @@ namespace Paragraff.Controllers
                         postVm.Book.Image = profilePicture;
                     }
                 }
-                this.postService.CreatePost(postVm);
+                var userId = this.User.Identity.GetUserId();
+                this.postService.CreatePost(postVm, userId);
+
                 return this.RedirectToAction("Index", "Home");
             }
+            // use this view model in the redirected action
             this.TempData["reSubmit"] = postVm;
-            return this.RedirectToAction("NewPost", postVm);
+            return this.RedirectToAction("NewPost");
         }
 
-        private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)
+        private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<CategoryViewModel> elements)
         {
             // Create an empty list to hold result of the operation
             var selectList = new List<SelectListItem>();
@@ -88,8 +92,8 @@ namespace Paragraff.Controllers
             {
                 selectList.Add(new SelectListItem
                 {
-                    Value = element,
-                    Text = element
+                    Value = element.Id.ToString(),
+                    Text = element.CategoryName
                 });
             }
 

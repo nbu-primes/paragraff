@@ -18,6 +18,7 @@ namespace Paragraff.App_Start
     using Paragraff.DataServices;
     using Paragraff.Services.Contracts;
     using Paragraff.Services;
+    using Paragraff.Services.Providers;
 
     public static class NinjectWebCommon
     {
@@ -105,6 +106,10 @@ namespace Paragraff.App_Start
 
             kernel.Bind<IPostService>()
                 .To<PostService>()
+                .InRequestScope();
+
+            kernel.Bind<IDateTimeProvider>()
+                .To<DateTimeProvider>()
                 .InRequestScope();
         }
     }

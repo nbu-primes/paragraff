@@ -9,6 +9,6 @@ namespace Paragraff.DataServices.Contracts
 {
     public interface IPostService
     {
-        void CreatePost(NewPostViewModel postVm);
+        void CreatePost(NewPostViewModel postVm, string userId);
     }
 }
