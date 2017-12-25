@@ -16,15 +16,17 @@
 
             <div class="control-group">
                 @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label", type = "file" })
-                <div class="col-md-10 span5">
-                    <label class="custom-file-upload">
-                        <input type="file" name="ProfilePicture" class="no-input" />
-                        <i class="icon icon-picture"></i> Change
-                    </label>
+                    <div class="col-md-10 span5">
+                <div class="controls">
+                        <label class="custom-file-upload">
+                            <input type="file" name="ProfilePicture" class="no-input" />
+                            <i class="icon icon-picture"></i> Change
+                        </label>
 
+                    </div>
                 </div>
             </div>
-            
+
             <div class="control-group">
                 @Html.LabelFor(m => m.FirstName, "First Name: ", new { @class = "control-label" })
                 <div class="controls">
