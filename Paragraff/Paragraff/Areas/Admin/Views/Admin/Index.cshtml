@@ -48,6 +48,7 @@
 <div id="admin-container"></div>
 
 @section scripts{
+    @Scripts.Render("~/bundles/matrix-tables")    
     <script>
         $("ul.quick-actions a").on("click", function () {
             console.log("clicked");

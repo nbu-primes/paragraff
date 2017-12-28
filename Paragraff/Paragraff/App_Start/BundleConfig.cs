@@ -48,7 +48,10 @@ namespace Paragraff
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/matrix-tables").Include(
-                "~/Content/MatrixTheme/js/jquery.dataTables.js",
+                "~/Content/MatrixTheme/js/jquery.dataTables.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/table-init").Include(
                 "~/Content/MatrixTheme/js/matrix.tables.js"
                 ));
 

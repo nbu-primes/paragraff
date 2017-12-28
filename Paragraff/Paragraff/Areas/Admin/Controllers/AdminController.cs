@@ -25,7 +25,7 @@ namespace Paragraff.Areas.Admin.Controllers
         public ActionResult AllUsers()
         {
             var allUsers = adminService.DisplayAllUsers();
-            return this.PartialView(allUsers);
+            return this.PartialView("_AllUsers", allUsers);
         }       
 
     }

@@ -1,4 +1,5 @@
-﻿using Paragraff.ViewModels.PostViewModels;
+﻿using Paragraff.ViewModels.DataTransferObjects;
+using Paragraff.ViewModels.PostViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace Paragraff.DataServices.Contracts
     public interface IPostService
     {
         void CreatePost(NewPostViewModel postVm, string userId);
+        IEnumerable<SummaryPostDto> GetUserPosts(string userId);
+        byte[] GetBookCover(Guid bookId);
     }
 }

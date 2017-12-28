@@ -26,7 +26,7 @@ namespace Paragraff.Services
 
             return imageData;
         }
-
+        
         public byte[] PostedToByteArray(HttpPostedFileBase postedFile)
         {
             byte[] imageData = null;

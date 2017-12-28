@@ -75,7 +75,7 @@ namespace Paragraff.Controllers
                     return this.File(defaultImage, "image/png");
                 }
 
-                return new FileContentResult(userImage, "image/jpeg");
+                return this.File(userImage, "image/jpeg");
             }
             else
             {

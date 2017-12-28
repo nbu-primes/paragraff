@@ -64,13 +64,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookViewModels\NewBookViewModel.cs" />
+    <Compile Include="BookViewModels\SummaryBookViewModel.cs" />
     <Compile Include="CategoriesViewModels\CategoryViewModel.cs" />
     <Compile Include="CustomValidations\ImageNotNull.cs" />
     <Compile Include="DataTransferObjects\EditUserDto.cs" />
     <Compile Include="DataTransferObjects\ProfilePictureDto.cs" />
+    <Compile Include="DataTransferObjects\SummaryBookDto.cs" />
+    <Compile Include="DataTransferObjects\SummaryPostDto.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="PostViewModels\NewPostViewModel.cs" />
     <Compile Include="PostViewModels\PostRatingViewModel.cs" />
+    <Compile Include="PostViewModels\SummaryPostViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserViewModels\EditUserViewModel.cs" />
     <Compile Include="UserViewModels\PublicUserViewModel.cs" />

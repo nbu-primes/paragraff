@@ -94,8 +94,8 @@ button#add-category {
     margin-left: 220px;
     margin-top: 10px;
     margin-bottom: 10px;
-    height: 60px;
-    width: 60px;
+    width: 60px; /* you can use % */
+    height: auto;
 }
 
 .center {
@@ -121,4 +121,10 @@ button#add-category {
 
 #published-on label {
     display: inline-block;
+}
+
+.summary-post-img {
+    width: 60px; /* you can use % */
+    height: auto;
+
 }

@@ -1,0 +1,15 @@
+﻿<h3> My Posts</h3>
+<h6>
+    test cache from LAYOUT: @DateTime.Now
+</h6>
+<p>
+    @{Html.RenderAction("SummaryPostsView", "Post", new { userId = this.User.Identity.GetUserId(), area = "" });}
+</p>
+
+@* table should be cachable (use partial view) *@
+
+@section scripts{
+
+
+    @Scripts.Render("~/bundles/matrix-tables")
+}

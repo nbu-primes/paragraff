@@ -130,6 +130,10 @@
     <Compile Include="Migrations\201712251739403_post-tradedWith-optional.Designer.cs">
       <DependentUpon>201712251739403_post-tradedWith-optional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712281422457_post-add-rows-isread-istradable.cs" />
+    <Compile Include="Migrations\201712281422457_post-add-rows-isread-istradable.Designer.cs">
+      <DependentUpon>201712281422457_post-add-rows-isread-istradable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712251739403_post-tradedWith-optional.resx">
       <DependentUpon>201712251739403_post-tradedWith-optional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712281422457_post-add-rows-isread-istradable.resx">
+      <DependentUpon>201712281422457_post-add-rows-isread-istradable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -49,6 +49,12 @@ namespace Paragraff.Data.Models
 
         public bool IsOwned { get; set; }
         
+        public bool IsActive { get; set; }
+        
+        public bool IsRead { get; set; }
+        
+        public bool IsTradable { get; set; }
+
         public virtual ICollection<PostRating> PostRatings
         {
             get
@@ -72,7 +78,5 @@ namespace Paragraff.Data.Models
                 this.comments = value;
             }
         }
-
-        public bool IsActive { get; set; }
     }
 }

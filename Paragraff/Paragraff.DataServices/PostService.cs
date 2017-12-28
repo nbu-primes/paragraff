@@ -10,6 +10,7 @@ using Paragraff.Services.Contracts;
 using Bytes2you.Validation;
 using Paragraff.Services.Providers;
 using Paragraff.Data;
+using Paragraff.ViewModels.DataTransferObjects;
 
 namespace Paragraff.DataServices
 {
@@ -74,6 +75,41 @@ namespace Paragraff.DataServices
 
             this.context.Posts.Add(post);
             this.context.SaveChanges();
+        }
+
+        public IEnumerable<SummaryPostDto> GetUserPosts(string userId)
+        {
+            Guard.WhenArgument(userId, "userId").IsNullOrEmpty().Throw();
+
+            var userPosts = this.context.Posts
+                .Where(p => p.PublisherId == userId)
+                .Select(p => new SummaryPostDto()
+                {
+                    PostId = p.Id,
+                    PublisherId = p.PublisherId,
+                    Ratings = p.PostRatings.Select(r => r.Rating),
+                    IsRead = p.IsRead,
+                    IsTradable = p.IsTradable,
+                    Price = p.Price,
+                    CreatedOn = p.CreatedOn,
+                    Book = new SummaryBookDto
+                    {
+                        BookId = p.Book.Id,
+                        Author = p.Book.Author,
+                        Title = p.Book.Author
+                    }
+                })
+                .ToList();
+
+            return userPosts;
+            
+        }
+
+        public byte[] GetBookCover(Guid bookId)
+        {
+            var cover = this.context.Books.Find(bookId).Image;
+
+            return cover;
         }
     }
 }

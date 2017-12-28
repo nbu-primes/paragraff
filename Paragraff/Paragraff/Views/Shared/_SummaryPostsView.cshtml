@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SummaryPostViewModel>
+
+<hr />
+
+@if (Model.Any())
+{
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"><i class="icon-th"></i></span>
+            <h5>Data table</h5>
+        </div>
+        <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="summary-post-img">Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Avg rating</th>
+                        <th>Status</th>
+                        <th>Date added</th>
+                        <th>More</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int i = 1;}
+                    @foreach (var post in Model)
+                {
+                        <tr class="gradeA">
+                            <td class="center">@i</td>
+                            <td>
+                                <img class="summary-post-img" src="@Url.Action("GetBookCover", "Post", new { bookId = post.Book.BookId, area = "" })" alt="Book Cover" />
+                            </td>
+                            <td>
+                                @post.Book.Title
+                            </td>
+                            <td>
+                                @post.Book.Author
+                            </td>
+                            <td>
+                                @if (post.IsRated)
+                                {
+                                    @post.Ratings.Average();
+                                }
+                                else
+                                {
+                                    <div>Not Rated</div>
+                                }
+                            </td>
+                            <td>
+                                @(post.IsRead ? "Read" : "To Read")
+                            </td>
+                            <td>
+                                @post.CreatedOn.ToString("dd.MM.yyyy")
+                            </td>
+                            <td>
+                                @Html.ActionLink("More", "PostDetails", "Post", new { postId = post.PostId, area = "" }, new { @class = "btn btn-info" })
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+                        }
+                        else
+                        {
+                             <h3>No Posts</h3>
+                        }
+
+<h6>
+    test cache from PARTIAL: @DateTime.Now
+</h6>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/table-init")

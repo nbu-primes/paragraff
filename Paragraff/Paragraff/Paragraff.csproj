@@ -369,7 +369,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\AllUsers.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AllUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Category\EditCategories.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminDashboard.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -441,6 +441,10 @@
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\User\EditUser.cshtml" />
     <Content Include="Views\Post\NewPost.cshtml" />
+    <Content Include="Views\Post\AllPosts.cshtml" />
+    <Content Include="Views\Post\MyPosts.cshtml" />
+    <Content Include="Views\Shared\_SummaryPostsView.cshtml" />
+    <Content Include="Views\Post\PostDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
