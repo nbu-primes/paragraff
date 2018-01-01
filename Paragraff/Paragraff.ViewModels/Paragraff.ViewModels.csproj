@@ -76,11 +76,18 @@
     <Compile Include="PostViewModels\PostRatingViewModel.cs" />
     <Compile Include="PostViewModels\SummaryPostViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewDTOs\BookReviewDto.cs" />
+    <Compile Include="ReviewDTOs\CommentReviewDto.cs" />
+    <Compile Include="ReviewDTOs\PostReviewDto.cs" />
+    <Compile Include="ReviewViewModels\BookReviewViewModel.cs" />
+    <Compile Include="ReviewViewModels\CommentReviewViewModel.cs" />
+    <Compile Include="ReviewViewModels\PostReviewViewModel.cs" />
     <Compile Include="UserViewModels\EditUserViewModel.cs" />
     <Compile Include="UserViewModels\PublicUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

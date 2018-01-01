@@ -128,3 +128,7 @@ button#add-category {
     height: auto;
 
 }
+
+tr.summary-posts td{
+    text-align: center !important;
+}

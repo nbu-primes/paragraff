@@ -23,7 +23,7 @@
                 <li class="dropdown" id="profile-messages">
                     <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome @User.Identity.Name</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
+                        <li><a href='@Url.Action("UserProfile", "User", new {area = "", username = this.User.Identity.Name })'><i class="icon-user"></i> My Profile</a></li>
                         @*<li class="divider"></li>*@
                         <li><a href='@Url.Action("MyPosts", "Post", new {area = ""})'><i class="fa fa-pencil-square"></i>My Posts</a></li>
                         <li class="divider"></li>

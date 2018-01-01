@@ -111,6 +111,10 @@ namespace Paragraff.App_Start
             kernel.Bind<IDateTimeProvider>()
                 .To<DateTimeProvider>()
                 .InRequestScope();
+
+            kernel.Bind<IReviewService>()
+                .To<ReviewService>()
+                .InRequestScope();
         }
     }
 }

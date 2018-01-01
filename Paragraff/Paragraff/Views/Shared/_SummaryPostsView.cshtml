@@ -26,9 +26,9 @@
                 <tbody>
                     @{int i = 1;}
                     @foreach (var post in Model)
-                {
-                        <tr class="gradeA">
-                            <td class="center">@i</td>
+                    {
+                        <tr class="summary-posts">
+                            <td @*style="@(i % 2 == 0 ? "background-color: #DDDDDD" : "")"*@>@i</td>
                             <td>
                                 <img class="summary-post-img" src="@Url.Action("GetBookCover", "Post", new { bookId = post.Book.BookId, area = "" })" alt="Book Cover" />
                             </td>
@@ -41,7 +41,7 @@
                             <td>
                                 @if (post.IsRated)
                                 {
-                                    @post.Ratings.Average();
+                                    @post.Ratings.Average(); <span>&nbsp;</span><span style="color:orange" class="fa fa-star"></span>
                                 }
                                 else
                                 {
@@ -55,7 +55,7 @@
                                 @post.CreatedOn.ToString("dd.MM.yyyy")
                             </td>
                             <td>
-                                @Html.ActionLink("More", "PostDetails", "Post", new { postId = post.PostId, area = "" }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("More", "Post", "Review", new { postId = post.PostId, area = "" }, new { @class = "btn btn-info" })
                             </td>
                         </tr>
                         i++;

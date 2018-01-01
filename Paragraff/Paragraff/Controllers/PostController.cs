@@ -31,6 +31,7 @@ namespace Paragraff.Controllers
             this.fileConverter = fileConverter;
         }
 
+        [AllowAnonymous]
         public ActionResult AllPosts()
         {
             return this.View();
@@ -128,12 +129,7 @@ namespace Paragraff.Controllers
             this.TempData["reSubmit"] = postVm;
             return this.RedirectToAction("NewPost");
         }
-
-        public ActionResult PostDetails(Guid postId)
-        {
-            return this.View();
-        }
-
+        
         private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<CategoryViewModel> elements)
         {
             // Create an empty list to hold result of the operation
