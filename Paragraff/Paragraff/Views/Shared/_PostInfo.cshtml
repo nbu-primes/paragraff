@@ -1,2 +1,86 @@
 ﻿@model PostReviewViewModel
 
+<div class="row review-top-margin">
+    <div class="span2">
+        <img class="review-img"
+             src="@Url.Action("GetBookImage", "Review",
+    new { area = "", bookId = Model.Book.Id })"
+             alt="Alternate Text" />
+    </div>
+    <div class="span5">
+        <h2>
+            @Html.ActionLink(Model.Username + "'s review", "UserProfile", "User",
+       new { area = "", username = Model.Username },
+       new { @class = "review-title" }) > @Model.Book.Title
+</h2>
+<h4>@Model.Book.Title</h4>
+        <p>
+            by <strong>@Model.Book.Author</strong>
+        </p>
+        <p>
+            <span class="fa fa-star" style="color:orange"></span>
+            @if (Model.IsRated)
+            {
+                <span>@Model.Ratings.Average()</span>
+            }
+            else
+            {
+                <span>not rated</span>
+            }
+        </p>
+        <p>
+            @Model.Description
+        </p>
+
+        <hr />
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1" id="logout">
+            <div class="comment-tabs">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
+                    <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="comments-logout">
+                        <ul class="media-list">
+                            <li class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
+                                </a>
+                                <div class="media-body">
+                                    <div class="well well-lg">
+                                        <h4 class="media-heading text-uppercase reviews">Marco </h4>
+                                        <span>23.213.12</span>
+                                        <ul class="media-date text-uppercase reviews list-inline"></ul>
+                                        <p class="media-comment">
+                                            Great snippet! Thanks for sharing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="add-comment">
+                        <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+                            <div class="form-group">
+                                <label for="email" class="col-sm-2 control-label">Comment</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="fa fa-send"></span> Summit comment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

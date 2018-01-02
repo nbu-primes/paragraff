@@ -20,6 +20,12 @@ namespace Paragraff.DataServices
             this.context = context;
         }
 
+        public byte[] GetBookImage(Guid bookId)
+        {
+            var image = this.context.Books.Find(bookId).Image;
+            return image;
+        }
+
         public PostReviewDto GetPostReview(Guid postId)
         {
             Guard.WhenArgument(postId, "postId").IsEqual(Guid.Empty).Throw();

@@ -10,5 +10,6 @@ namespace Paragraff.DataServices.Contracts
     public interface IReviewService
     {
         PostReviewDto GetPostReview(Guid postId);
+        byte[] GetBookImage(Guid bookId);
     }
 }

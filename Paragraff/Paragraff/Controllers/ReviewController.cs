@@ -1,4 +1,5 @@
 ﻿using Bytes2you.Validation;
+using Microsoft.AspNet.Identity;
 using Paragraff.DataServices.Contracts;
 using Paragraff.ViewModels.ReviewViewModels;
 using System;
@@ -6,23 +7,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Paragraff.Controllers
 {
     public class ReviewController : Controller
     {
         private readonly IReviewService reviewService;
+        private readonly ApplicationUserManager userManager;
 
-        public ReviewController(IReviewService reviewService)
+        public ReviewController(IReviewService reviewService, ApplicationUserManager userManager)
         {
             Guard.WhenArgument(reviewService, "reviewService").IsNull().Throw();
+            Guard.WhenArgument(userManager, "userManager").IsNull().Throw();
 
             this.reviewService = reviewService;
+            this.userManager = userManager;
         }
 
         public ActionResult Post(Guid postId)
         {
             return this.View(postId);
+        }
+        
+        public ActionResult GetBookImage(Guid bookId)
+        {
+            var imageData = this.reviewService.GetBookImage(bookId);
+
+            // TODO: add default image
+            if(imageData == null)
+            {
+                throw new NullReferenceException("no book cover");
+            }else
+            {
+                return this.File(imageData, "image/jpeg");
+            }
         }
 
         [ChildActionOnly]
@@ -55,7 +74,8 @@ namespace Paragraff.Controllers
                 IsRead = review.IsRead,
                 IsTradable = review.IsTradable,
                 Price = review.Price,
-                PublisherId = review.PublisherId
+                Username = this.userManager.FindById(review.PublisherId).UserName,
+                Ratings = review.Ratings
             };
 
             return this.PartialView("_PostInfo", reviewVm);

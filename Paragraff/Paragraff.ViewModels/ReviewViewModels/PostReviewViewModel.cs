@@ -9,7 +9,7 @@ namespace Paragraff.ViewModels.ReviewViewModels
 {
     public class PostReviewViewModel
     {
-        public string PublisherId { get; set; }
+        public string Username { get; set; }
 
         public BookReviewViewModel Book { get; set; }
 
@@ -30,5 +30,7 @@ namespace Paragraff.ViewModels.ReviewViewModels
         public bool IsRated { get; set; }
 
         public IEnumerable<CommentReviewViewModel> Comments { get; set; }
+
+        public IEnumerable<int> Ratings { get; set; }
     }
 }
