@@ -33,6 +33,7 @@ namespace Paragraff.DataServices
             var review = context.Posts.Where(p => p.Id == postId)
                 .Select(p => new PostReviewDto()
                 {
+                    PostId = p.Id,
                     PublisherId = p.PublisherId,
                     Description = p.Description,
                     CreatedOn = p.CreatedOn,

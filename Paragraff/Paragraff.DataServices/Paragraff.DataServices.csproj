@@ -59,8 +59,10 @@
   <ItemGroup>
     <Compile Include="AdminService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="CommentService.cs" />
     <Compile Include="Contracts\IAdminService.cs" />
     <Compile Include="Contracts\ICategoryService.cs" />
+    <Compile Include="Contracts\ICommentService.cs" />
     <Compile Include="Contracts\IPostService.cs" />
     <Compile Include="Contracts\IReviewService.cs" />
     <Compile Include="Contracts\IUserService.cs" />

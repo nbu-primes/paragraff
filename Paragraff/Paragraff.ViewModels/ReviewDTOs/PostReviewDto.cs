@@ -8,6 +8,8 @@ namespace Paragraff.ViewModels.ReviewDTOs
 {
     public class PostReviewDto
     {
+        public Guid PostId { get; set; }
+
         public string PublisherId { get; set; }
 
         public BookReviewDto Book { get; set; }

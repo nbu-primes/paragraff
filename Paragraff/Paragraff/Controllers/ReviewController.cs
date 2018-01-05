@@ -54,6 +54,7 @@ namespace Paragraff.Controllers
 
             var reviewVm = new PostReviewViewModel()
             {
+                PostId = review.PostId,
                 IsRated = review.Ratings.Any(),
                 Comments = review.Comments.Select(c => new CommentReviewViewModel()
                 {

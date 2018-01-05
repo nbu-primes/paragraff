@@ -9,6 +9,8 @@ namespace Paragraff.ViewModels.ReviewViewModels
 {
     public class PostReviewViewModel
     {
+        public Guid PostId { get; set; }
+    
         public string Username { get; set; }
 
         public BookReviewViewModel Book { get; set; }

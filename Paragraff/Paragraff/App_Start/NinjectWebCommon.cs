@@ -115,6 +115,10 @@ namespace Paragraff.App_Start
             kernel.Bind<IReviewService>()
                 .To<ReviewService>()
                 .InRequestScope();
+
+            kernel.Bind<ICommentService>()
+                .To<CommentService>()
+                .InRequestScope();
         }
     }
 }
