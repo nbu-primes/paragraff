@@ -39,7 +39,40 @@ namespace Paragraff.DataServices
 
             return allUsers;
         }
-        
-        
+
+        public void ChangeStatus(string username)
+        {
+            var user = this.dbContext.Users.First(u => u.UserName == username);
+            user.IsActive = !user.IsActive;
+
+            var postsByUser = this.dbContext.Posts.Where(p => p.Publisher == user);
+
+            foreach (var post in postsByUser)
+            {
+                post.IsActive = !post.IsActive;
+            }
+
+            this.dbContext.SaveChanges();
+        }
+
+        public EditUserViewModel UserDetails(string username)
+        {
+            var viewModel = this.dbContext.Users
+                 .Where(u => u.UserName == username)
+                 .Select(user => new EditUserViewModel()
+                 {
+                     FirstName = user.FirstName,
+                     LastName = user.LastName,
+                     About = user.About,
+                     Email = user.Email,
+                     Gender = user.Gender,
+                     Location = user.Location,
+                     ProfilePicture = user.ProfilePicture
+                 })
+                 .First();
+
+
+            return viewModel;
+        }
     }
 }

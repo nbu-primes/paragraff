@@ -59,7 +59,7 @@ namespace Paragraff.Controllers
 
             return this.View(userViewModel);
         }
-
+        
         [AllowAnonymous]
         public ActionResult UserProfile(string username)
         {

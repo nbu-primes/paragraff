@@ -1,0 +1,39 @@
+﻿@model EditUserViewModel
+@using System.Linq
+<div class="widget-box">
+    <div class="widget-title">
+        <span class="icon"> <i class="icon-align-justify"></i> </span>
+        <h5>Details for @Model.FirstName</h5>
+    </div>
+    <div class="widget-content">
+        <div class="row-fluid">
+            <div class="span6">
+                <table class="">
+                    <tbody>
+                        <tr>
+                            <td><h4>Profile Picture: </h4><img class="profile-picture" src="@Url.Action("UserPhotos", "User", new { area = ""})" /></td>
+                        </tr>
+                        <tr>
+                            <td><h4>First Name: </h4>@Model.FirstName</td>
+                        </tr>
+                        <tr>
+                            <td><h4>Last Name: </h4>@Model.LastName</td>
+                        </tr>
+                        <tr>
+                            <td><h4>Email: </h4>@Model.Email</td>
+                        </tr>
+                        <tr>
+                            <td><h4>Gender: </h4>@Model.Gender</td>
+                        </tr>
+                        <tr>
+                            <td><h4>Location: </h4>@Model.Gender</td>
+                        </tr>
+                        <tr>
+                            <td><h4>About: </h4>@Model.About</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -33,16 +33,16 @@
                             <td>User</td>
                         }
                         <td>
-                            @Html.ActionLink("Edit", "EditUser", "User", new { username = user.Username, area = ""}, new { @class = "btn" })
+                            @Html.ActionLink("Edit", "EditUser", "User", new { username = user.Username, area = ""}, new { @class = "btn btn-primary" })
                             @if (user.IsActive)
                             {
-                                <button class="btn-danger">Deactivate</button>
+                                @Html.ActionLink("Deactivate", "ChangeStatus", "Admin", new { username = user.Username, area = "Admin"}, new { @class = "btn btn-danger" })
                             }
                             else
                             {
-                                <button class="btn-success">Activate</button>
+                                @Html.ActionLink("Activate", "ChangeStatus", "Admin", new { username = user.Username, area = "Admin"}, new { @class = "btn btn-success" })
                             }
-                            <button class="btn-warning">Details</button>
+                             @Html.ActionLink("Details", "UserDetails", "Admin", new { username = user.Username, area = "Admin"}, new { @class = "btn btn-warning" })
                         </td>
                     </tr>
                     i++;

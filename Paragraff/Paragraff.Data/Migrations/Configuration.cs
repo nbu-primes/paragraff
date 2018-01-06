@@ -42,6 +42,7 @@ namespace Paragraff.Data.Migrations
                 var admin = new User
                 {
                     EmailConfirmed = true,
+                    IsActive = true,
                     UserName = "test",
                     Email = "test@test.com"
                 };
