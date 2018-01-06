@@ -82,6 +82,33 @@ namespace Paragraff.Controllers
             return this.PartialView("_SummaryPostsView", userPosts);
         }
 
+        [ChildActionOnly]
+        public ActionResult SummaryAllPostsView()
+        {
+
+            var userPosts = this.postService.GetAllPosts()
+                .Select(p => new SummaryPostViewModel()
+                {
+                    PostId = p.PostId,
+                    Ratings = p.Ratings,
+                    IsRated = p.Ratings.Any(),
+                    IsRead = p.IsRead,
+                    IsTradable = p.IsTradable,
+                    Price = p.Price,
+                    PublisherId = p.PublisherId,
+                    CreatedOn = p.CreatedOn,
+                    Book = new SummaryBookViewModel()
+                    {
+                        Author = p.Book.Author,
+                        Title = p.Book.Title,
+                        BookId = p.Book.BookId
+                    }
+                })
+                .OrderBy(p => p.CreatedOn);
+
+            return this.PartialView("_SummaryPostsView", userPosts);
+        }
+
         public ActionResult NewPost()
         {
             var allCategories = this.categoryService.GetAllCategories();

@@ -1,7 +1,10 @@
-﻿
-@{
-    ViewBag.Title = "AllPosts";
+﻿<h2>AllPosts</h2>
+<p>
+    @{Html.RenderAction("SummaryAllPostsView", "Post", new { area = "" });}
+</p>
+
+@section scripts{
+
+
+    @Scripts.Render("~/bundles/matrix-tables")
 }
-
-<h2>AllPosts</h2>
-

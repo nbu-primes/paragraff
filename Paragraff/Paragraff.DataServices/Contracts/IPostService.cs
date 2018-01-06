@@ -12,6 +12,7 @@ namespace Paragraff.DataServices.Contracts
     {
         void CreatePost(NewPostViewModel postVm, string userId);
         IEnumerable<SummaryPostDto> GetUserPosts(string userId);
+        IEnumerable<SummaryPostDto> GetAllPosts();
         byte[] GetBookCover(Guid bookId);
     }
 }
