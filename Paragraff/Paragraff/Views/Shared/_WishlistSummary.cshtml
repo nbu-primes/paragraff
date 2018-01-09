@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BookReviewDto>
+
+<hr />
+
+@if (Model.Any())
+{
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"><i class="icon-th"></i></span>
+            <h5>Data table</h5>
+        </div>
+        <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="summary-post-img">Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int i = 1;}
+                    @foreach (var book in Model)
+                    {
+                    <tr class="summary-posts">
+                        <td @*style="@(i % 2 == 0 ? "background-color: #DDDDDD" : "")"*@>@i</td>
+                        <td>
+                            <img class="summary-post-img" src="@Url.Action("GetBookCover", "Post", new { bookId = book.Id, area = "" })" alt="Book Cover" />
+                        </td>
+                        <td>
+                            @book.Title
+                        </td>
+                        <td>
+                            @book.Author
+                        </td>
+                        <td>
+                            @book.Category
+                        </td>
+                    </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <h3>No Books in the Wishlist</h3>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/table-init")

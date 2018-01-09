@@ -1,12 +1,9 @@
 ﻿@model EditUserViewModel
 @using System.Linq
-
-<h2>edit user</h2>
-
 <div class="widget-box">
     <div class="widget-title">
         <span class="icon"> <i class="icon-align-justify"></i> </span>
-        <h5>Personal-info</h5>
+        <h5>Edit User</h5>
     </div>
     <div class="widget-content nopadding">
         @using (Html.BeginForm("EditUser", "User", new { area = "" }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
@@ -19,7 +16,7 @@
                     <div class="col-md-10 span5">
                     <div class="controls">
                         <label class="custom-file-upload">
-                            <input type="file" name="ProfilePicture" class="no-input" />
+                            <input type="file" name="Profile Picture" class="no-input" />
                             <i class="icon icon-picture"></i> Change
                         </label>
                     </div>

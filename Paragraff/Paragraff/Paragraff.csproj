@@ -447,10 +447,13 @@
     <Content Include="Views\Post\AllPosts.cshtml" />
     <Content Include="Views\Post\MyPosts.cshtml" />
     <Content Include="Views\Shared\_SummaryPostsView.cshtml" />
-    <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Review\Post.cshtml" />
     <Content Include="Views\Shared\_PostInfo.cshtml" />
     <Content Include="Views\Shared\_PostCommentSection.cshtml" />
+    <Content Include="Views\User\Wishlist.cshtml" />
+    <Content Include="Views\Shared\_WishlistSummary.cshtml" />
+    <Content Include="Views\User\NewToWishlist.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

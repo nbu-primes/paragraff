@@ -2,7 +2,10 @@
 using Paragraff.Data;
 using Paragraff.Data.Models;
 using Paragraff.DataServices.Contracts;
+using Paragraff.Services.Contracts;
+using Paragraff.ViewModels.BookViewModels;
 using Paragraff.ViewModels.DataTransferObjects;
+using Paragraff.ViewModels.ReviewDTOs;
 using Paragraff.ViewModels.UserViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,12 +18,15 @@ namespace Paragraff.DataServices
     public class UserService : IUserService
     {
         private readonly ApplicationDbContext context;
+        private readonly IFileConverter fileConverter;
 
-        public UserService(ApplicationDbContext context)
+        public UserService(ApplicationDbContext context, IFileConverter fileConverter)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
+            Guard.WhenArgument(fileConverter, "fileConverter").IsNull().Throw();
 
             this.context = context;
+            this.fileConverter = fileConverter;
         }
 
         public void EditUser(string id, EditUserViewModel data)
@@ -77,6 +83,38 @@ namespace Paragraff.DataServices
                 .First();
 
             return profilePicture;
+        }
+
+        public IEnumerable<BookReviewDto> GetWishlist(string username)
+        {
+            var wishlist = this.context.Users.First(u => u.UserName == username).Wishlist.Select(b => new BookReviewDto()
+            {
+                Id = b.Id,
+                Title = b.Title,
+                Author = b.Author,
+                Category = b.Category.CategoryName
+            });
+
+            return wishlist;
+        }
+
+        public void AddToWishlist(NewBookViewModel model, string userId)
+        {
+            Guard.WhenArgument(userId, "userId").IsNullOrEmpty().Throw();
+            
+            var book = new Book()
+            {
+                Id = Guid.NewGuid(),
+                Author = model.Author,
+                CategoryId = Guid.Parse(model.Category),
+                Image = this.fileConverter.PostedToByteArray(model.Image),
+                PublishedOn = model.PublishedOn,
+                Publisher = model.Publisher,
+                Title = model.Title
+            };
+
+            this.context.Users.Find(userId).Wishlist.Add(book);
+            this.context.SaveChanges();
         }
     }
 }

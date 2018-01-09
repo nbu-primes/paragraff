@@ -26,6 +26,7 @@
                         <li><a href='@Url.Action("UserProfile", "User", new {area = "", username = this.User.Identity.Name })'><i class="icon-user"></i> My Profile</a></li>
                         @*<li class="divider"></li>*@
                         <li><a href='@Url.Action("MyPosts", "Post", new {area = ""})'><i class="fa fa-pencil-square"></i>My Posts</a></li>
+                        <li><a href='@Url.Action("Wishlist", "User", new {area = ""})'><i class="fa fa-shopping-cart"></i>Wishlist</a></li>
                         <li class="divider"></li>
                         <li>
                             <a class="nav-link" href="@Url.Action("EditUser", "User", new { area=""})">
