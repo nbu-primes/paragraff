@@ -87,6 +87,8 @@ namespace Paragraff.DataServices
 
         public IEnumerable<BookReviewDto> GetWishlist(string username)
         {
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+
             var wishlist = this.context.Users.First(u => u.UserName == username).Wishlist.Select(b => new BookReviewDto()
             {
                 Id = b.Id,
@@ -98,22 +100,16 @@ namespace Paragraff.DataServices
             return wishlist;
         }
 
-        public void AddToWishlist(NewBookViewModel model, string userId)
+        public void AddToWishlist(string title, string username)
         {
-            Guard.WhenArgument(userId, "userId").IsNullOrEmpty().Throw();
-            
-            var book = new Book()
-            {
-                Id = Guid.NewGuid(),
-                Author = model.Author,
-                CategoryId = Guid.Parse(model.Category),
-                Image = this.fileConverter.PostedToByteArray(model.Image),
-                PublishedOn = model.PublishedOn,
-                Publisher = model.Publisher,
-                Title = model.Title
-            };
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(title, "title").IsNullOrEmpty().Throw();
 
-            this.context.Users.Find(userId).Wishlist.Add(book);
+            var book = this.context.Books.Where(b => b.Title == title).First();
+
+            var user = this.context.Users.First(u => u.UserName == username);
+
+            user.Wishlist.Add(book);
             this.context.SaveChanges();
         }
     }

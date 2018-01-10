@@ -6,10 +6,8 @@
 <p>
     @{Html.RenderAction("WishlistSummary", "User", new { area = "" });}
 </p>
-    @Html.ActionLink("Add To Wishlist", "NewToWishlist", "User", new { area = "" }, new { @class = "btn btn-info" })
 
 @section scripts{
-
 
     @Scripts.Render("~/bundles/matrix-tables")
 }

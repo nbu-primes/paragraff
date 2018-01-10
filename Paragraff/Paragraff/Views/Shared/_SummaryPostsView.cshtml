@@ -57,6 +57,9 @@
                             <td>
                                 @Html.ActionLink("More", "Post", "Review", new { postId = post.PostId, area = "" }, new { @class = "btn btn-info" })
                             </td>
+                            <td>
+                                @Html.ActionLink("Add To Wishlist", "AddToWishlist", "User", new { title = post.Book.Title, area = "" }, new { @class = "btn btn-info" })
+                            </td>
                         </tr>
                         i++;
                     }

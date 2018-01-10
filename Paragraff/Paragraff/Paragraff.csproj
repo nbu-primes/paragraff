@@ -452,7 +452,6 @@
     <Content Include="Views\Shared\_PostCommentSection.cshtml" />
     <Content Include="Views\User\Wishlist.cshtml" />
     <Content Include="Views\Shared\_WishlistSummary.cshtml" />
-    <Content Include="Views\User\NewToWishlist.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>

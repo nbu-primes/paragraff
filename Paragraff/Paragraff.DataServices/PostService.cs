@@ -72,7 +72,7 @@ namespace Paragraff.DataServices
             };
 
             post.PostRatings.Add(publisherRating);
-
+            this.context.Books.Add(book);
             this.context.Posts.Add(post);
             this.context.SaveChanges();
         }
@@ -96,7 +96,7 @@ namespace Paragraff.DataServices
                     {
                         BookId = p.Book.Id,
                         Author = p.Book.Author,
-                        Title = p.Book.Author
+                        Title = p.Book.Title
                     }
                 })
                 .ToList();
@@ -121,7 +121,7 @@ namespace Paragraff.DataServices
                     {
                         BookId = p.Book.Id,
                         Author = p.Book.Author,
-                        Title = p.Book.Author
+                        Title = p.Book.Title
                     }
                 })
                 .ToList();

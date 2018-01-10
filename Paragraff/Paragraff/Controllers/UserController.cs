@@ -115,62 +115,11 @@ namespace Paragraff.Controllers
             return this.PartialView("_WishlistSummary", wishlist);
         }
 
-        public ActionResult NewToWishlist()
+        public ActionResult AddToWishlist(string title)
         {
-            var allCategories = this.categoryService.GetAllCategories();
+            this.userService.AddToWishlist(title, this.User.Identity.Name);
 
-            var states = this.GetSelectListItems(allCategories);
-
-            var bookVm = new NewBookViewModel();
-            bookVm.Categories = states;
-            return this.View(bookVm);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddToWishlist(NewBookViewModel bookVm)
-        {
-            if (ModelState.IsValid)
-            {
-                if (Request.Files.Count > 0)
-                {
-                    var profilePicture = this.Request.Files["Book.Image"];
-
-                    //error idk why
-                    if (profilePicture.ContentLength > 0)
-                    {
-                       bookVm.Image = profilePicture;
-                    }
-                }
-                var userId = this.User.Identity.GetUserId();
-                this.userService.AddToWishlist(bookVm, userId);
-
-                return this.RedirectToAction("Index", "Home");
-            }
-            // use this view model in the redirected action
-
-            return this.RedirectToAction("NewToWishlist");
-        }
-
-        private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<CategoryViewModel> elements)
-        {
-            // Create an empty list to hold result of the operation
-            var selectList = new List<SelectListItem>();
-
-            // For each string in the 'elements' variable, create a new SelectListItem object
-            // that has both its Value and Text properties set to a particular value.
-            // This will result in MVC rendering each item as:
-            //     <option value="State Name">State Name</option>
-            foreach (var element in elements)
-            {
-                selectList.Add(new SelectListItem
-                {
-                    Value = element.Id.ToString(),
-                    Text = element.CategoryName
-                });
-            }
-
-            return selectList;
+            return this.RedirectToAction("AllPosts", "Post");
         }
     }
 }
