@@ -9,11 +9,12 @@
         @using (Html.BeginForm("EditUser", "User", new { area = "" }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
         {
             @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
             <img class="profile-picture" src="@Url.Action("UserPhotos", "User" )" />
 
             <div class="control-group">
                 @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label", type = "file" })
-                    <div class="col-md-10 span5">
+                <div class="col-md-10 span5">
                     <div class="controls">
                         <label class="custom-file-upload">
                             <input type="file" name="Profile Picture" class="no-input" />
@@ -44,7 +45,7 @@
             <div class="control-group">
                 <div class="controls">
                     @Html.ActionLink("Change Password", "ChangePassword", "Manage",
-                                     new { area = "" }, new { @class = "btn btn-info" })
+                                           new { area = "" }, new { @class = "btn btn-info" })
                 </div>
             </div>
             <div class="control-group">

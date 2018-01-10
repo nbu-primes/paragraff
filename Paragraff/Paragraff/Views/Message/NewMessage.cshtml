@@ -1,0 +1,39 @@
+﻿@model NewMessageViewModel
+
+<div class="widget-box">
+    <div class="widget-title">
+        <span class="icon"> <i class="icon-envelope"></i> </span>
+        <h5>New Message</h5>
+    </div>
+    <div class="widget-content nopadding">
+        @using (Html.BeginForm("NewMessage", "Message", new { area = "" }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+
+            <div class="control-group">
+                @Html.LabelFor(m => m.ToUser, "Receiver: ", new { @class = "control-label" })
+                <div class="controls">
+                    @Html.EditorFor(m => m.ToUser)
+                    <br />
+                    @Html.ValidationMessageFor(m => m.ToUser, "", new { @class = "validation-msg" })
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Content, "Message: ", new { @class = "control-label" })
+                <div class="controls">
+                    @Html.TextAreaFor(m => m.Content)
+                    <br />
+                    @Html.ValidationMessageFor(m => m.Content, "", new { @class = "validation-msg" })
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        }
+    </div>
+</div>
+
+
