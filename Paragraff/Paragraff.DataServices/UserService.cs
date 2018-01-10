@@ -112,5 +112,19 @@ namespace Paragraff.DataServices
             user.Wishlist.Add(book);
             this.context.SaveChanges();
         }
+
+        public void RemoveFromWishlist(string title, string username)
+        {
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(title, "title").IsNullOrEmpty().Throw();
+            
+            var book = this.context.Books.Where(b => b.Title == title).First();
+
+            var user = this.context.Users.First(u => u.UserName == username);
+
+            user.Wishlist.Remove(book);
+            this.context.SaveChanges();
+        }
+
     }
 }

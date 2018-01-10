@@ -219,6 +219,7 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -451,12 +452,12 @@
     <Content Include="Views\Review\Post.cshtml" />
     <Content Include="Views\Shared\_PostInfo.cshtml" />
     <Content Include="Views\Shared\_PostCommentSection.cshtml" />
-    <Content Include="Views\User\Wishlist.cshtml" />
     <Content Include="Views\Shared\_WishlistSummary.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Message\NewMessage.cshtml" />
     <Content Include="Views\Message\Inbox.cshtml" />
     <Content Include="Views\Shared\_InboxSummary.cshtml" />
+    <Content Include="Views\Wishlist\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

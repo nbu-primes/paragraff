@@ -101,25 +101,5 @@ namespace Paragraff.Controllers
                 return this.File(defaultImage, "image/png");
             }
         }
-
-        public ActionResult Wishlist()
-        {
-            return this.View();
-        }
-
-        [ChildActionOnly]
-        public ActionResult WishlistSummary()
-        {
-            var wishlist = this.userService.GetWishlist(this.User.Identity.Name);
-
-            return this.PartialView("_WishlistSummary", wishlist);
-        }
-
-        public ActionResult AddToWishlist(string title)
-        {
-            this.userService.AddToWishlist(title, this.User.Identity.Name);
-
-            return this.RedirectToAction("AllPosts", "Post");
-        }
     }
 }

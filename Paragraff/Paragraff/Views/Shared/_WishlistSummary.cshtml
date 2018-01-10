@@ -18,6 +18,7 @@
                         <th>Title</th>
                         <th>Author</th>
                         <th>Category</th>
+                        <th>More<th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,9 @@
                         </td>
                         <td>
                             @book.Category
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "RemoveFromWishlist", "Wishlist", new { title = book.Title, area = "" }, new { @class = "btn btn-danger" })
                         </td>
                     </tr>
                         i++;

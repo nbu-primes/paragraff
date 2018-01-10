@@ -18,5 +18,6 @@ namespace Paragraff.DataServices.Contracts
         void EditUser(string username, EditUserViewModel data);
         IEnumerable<BookReviewDto> GetWishlist(string username);
         void AddToWishlist(string title, string username);
+        void RemoveFromWishlist(string title, string username);
     }
 }
