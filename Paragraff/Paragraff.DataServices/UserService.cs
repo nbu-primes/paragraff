@@ -2,7 +2,10 @@
 using Paragraff.Data;
 using Paragraff.Data.Models;
 using Paragraff.DataServices.Contracts;
+using Paragraff.Services.Contracts;
+using Paragraff.ViewModels.BookViewModels;
 using Paragraff.ViewModels.DataTransferObjects;
+using Paragraff.ViewModels.ReviewDTOs;
 using Paragraff.ViewModels.UserViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,12 +18,15 @@ namespace Paragraff.DataServices
     public class UserService : IUserService
     {
         private readonly ApplicationDbContext context;
+        private readonly IFileConverter fileConverter;
 
-        public UserService(ApplicationDbContext context)
+        public UserService(ApplicationDbContext context, IFileConverter fileConverter)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
+            Guard.WhenArgument(fileConverter, "fileConverter").IsNull().Throw();
 
             this.context = context;
+            this.fileConverter = fileConverter;
         }
 
         public void EditUser(string id, EditUserViewModel data)
@@ -78,5 +84,47 @@ namespace Paragraff.DataServices
 
             return profilePicture;
         }
+
+        public IEnumerable<BookReviewDto> GetWishlist(string username)
+        {
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+
+            var wishlist = this.context.Users.First(u => u.UserName == username).Wishlist.Select(b => new BookReviewDto()
+            {
+                Id = b.Id,
+                Title = b.Title,
+                Author = b.Author,
+                Category = b.Category.CategoryName
+            });
+
+            return wishlist;
+        }
+
+        public void AddToWishlist(string title, string username)
+        {
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(title, "title").IsNullOrEmpty().Throw();
+
+            var book = this.context.Books.Where(b => b.Title == title).First();
+
+            var user = this.context.Users.First(u => u.UserName == username);
+
+            user.Wishlist.Add(book);
+            this.context.SaveChanges();
+        }
+
+        public void RemoveFromWishlist(string title, string username)
+        {
+            Guard.WhenArgument(username, "username").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(title, "title").IsNullOrEmpty().Throw();
+            
+            var book = this.context.Books.Where(b => b.Title == title).First();
+
+            var user = this.context.Users.First(u => u.UserName == username);
+
+            user.Wishlist.Remove(book);
+            this.context.SaveChanges();
+        }
+
     }
 }

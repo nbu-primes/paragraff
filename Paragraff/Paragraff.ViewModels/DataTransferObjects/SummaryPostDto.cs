@@ -12,6 +12,7 @@ namespace Paragraff.ViewModels.DataTransferObjects
         public SummaryBookDto Book { get; set; }
         public string PublisherId { get; set; }
         public IEnumerable<int> Ratings { get; set; }
+        public bool IsActive { get; set; }
         public bool IsTradable { get; set; }
         public bool IsRead { get; set; }
         public decimal Price { get; set; }

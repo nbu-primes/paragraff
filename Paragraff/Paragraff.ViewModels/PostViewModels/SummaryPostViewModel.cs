@@ -15,6 +15,7 @@ namespace Paragraff.ViewModels.PostViewModels
         public bool IsRated { get; set; }
         public bool IsTradable { get; set; }
         public bool IsRead { get; set; }
+        public bool IsActive { get; set; }
         public decimal Price { get; set; }
         public SummaryBookViewModel Book { get; set; }
         public DateTime CreatedOn { get; set; }

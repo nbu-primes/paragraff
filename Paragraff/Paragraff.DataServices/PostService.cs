@@ -72,7 +72,7 @@ namespace Paragraff.DataServices
             };
 
             post.PostRatings.Add(publisherRating);
-
+            this.context.Books.Add(book);
             this.context.Posts.Add(post);
             this.context.SaveChanges();
         }
@@ -88,6 +88,7 @@ namespace Paragraff.DataServices
                     PostId = p.Id,
                     PublisherId = p.PublisherId,
                     Ratings = p.PostRatings.Select(r => r.Rating),
+                    IsActive = p.IsActive,
                     IsRead = p.IsRead,
                     IsTradable = p.IsTradable,
                     Price = p.Price,
@@ -96,7 +97,7 @@ namespace Paragraff.DataServices
                     {
                         BookId = p.Book.Id,
                         Author = p.Book.Author,
-                        Title = p.Book.Author
+                        Title = p.Book.Title
                     }
                 })
                 .ToList();
@@ -113,6 +114,7 @@ namespace Paragraff.DataServices
                     PostId = p.Id,
                     PublisherId = p.PublisherId,
                     Ratings = p.PostRatings.Select(r => r.Rating),
+                    IsActive = p.IsActive,
                     IsRead = p.IsRead,
                     IsTradable = p.IsTradable,
                     Price = p.Price,
@@ -121,7 +123,7 @@ namespace Paragraff.DataServices
                     {
                         BookId = p.Book.Id,
                         Author = p.Book.Author,
-                        Title = p.Book.Author
+                        Title = p.Book.Title
                     }
                 })
                 .ToList();

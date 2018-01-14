@@ -72,6 +72,8 @@
     <Compile Include="DataTransferObjects\SummaryBookDto.cs" />
     <Compile Include="DataTransferObjects\SummaryPostDto.cs" />
     <Compile Include="Enums\Gender.cs" />
+    <Compile Include="MessageViewModels\SentMessageViewModel.cs" />
+    <Compile Include="MessageViewModels\NewMessageViewModel.cs" />
     <Compile Include="PostViewModels\NewPostViewModel.cs" />
     <Compile Include="PostViewModels\PostRatingViewModel.cs" />
     <Compile Include="PostViewModels\SummaryPostViewModel.cs" />

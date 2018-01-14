@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SentMessageViewModel>
+
+@if (Model.Any())
+{
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"><i class="icon-envelope"></i></span>
+            <h5>Inbox</h5>
+        </div>
+        <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sent From</th>
+                        <th>Sent To</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var message in Model)
+                    {
+                        <tr class="summary-posts">
+                            <td>
+                                @message.SendOn.ToString()
+                            </td>
+                            <td>
+                                @message.FromUser
+                            </td>
+                            <td>
+                                @message.ToUser
+                            </td>
+                            <td>
+                                @message.Content
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <h3>No Messages in your Inbox</h3>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/table-init")

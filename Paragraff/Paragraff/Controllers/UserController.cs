@@ -2,7 +2,11 @@
 using Microsoft.AspNet.Identity;
 using Paragraff.DataServices.Contracts;
 using Paragraff.Services.Contracts;
+using Paragraff.ViewModels.BookViewModels;
+using Paragraff.ViewModels.CategoriesViewModels;
 using Paragraff.ViewModels.UserViewModels;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
 
@@ -13,14 +17,20 @@ namespace Paragraff.Controllers
     {
         private readonly IUserService userService;
         private readonly IFileConverter fileConverter;
+        private readonly ICategoryService categoryService;
+        private readonly IAdminService adminService;
 
-        public UserController(IUserService userService, IFileConverter fileConverter)
+        public UserController(IUserService userService, IFileConverter fileConverter, ICategoryService categoryService, IAdminService adminService)
         {
             Guard.WhenArgument(userService, "userService").IsNull().Throw();
             Guard.WhenArgument(fileConverter, "fileConverter").IsNull().Throw();
+            Guard.WhenArgument(categoryService, "categoryService").IsNull().Throw();
+            Guard.WhenArgument(adminService, "adminService").IsNull().Throw();
 
             this.userService = userService;
             this.fileConverter = fileConverter;
+            this.categoryService = categoryService;
+            this.adminService = adminService;
         }
 
         // Exclude the file, because it tries to parse it automatically, do i manually instead.
@@ -63,7 +73,9 @@ namespace Paragraff.Controllers
         [AllowAnonymous]
         public ActionResult UserProfile(string username)
         {
-            return this.View();
+            var userDetails = adminService.UserDetails(username);
+
+            return this.View(userDetails);
         }
 
         public FileContentResult UserPhotos(string username)

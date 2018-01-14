@@ -64,6 +64,7 @@ namespace Paragraff.Controllers
                 {
                     PostId = p.PostId,
                     Ratings = p.Ratings,
+                    IsActive = p.IsActive,
                     IsRated = p.Ratings.Any(),
                     IsRead = p.IsRead,
                     IsTradable = p.IsTradable,
@@ -93,6 +94,7 @@ namespace Paragraff.Controllers
                     Ratings = p.Ratings,
                     IsRated = p.Ratings.Any(),
                     IsRead = p.IsRead,
+                    IsActive = p.IsActive,
                     IsTradable = p.IsTradable,
                     Price = p.Price,
                     PublisherId = p.PublisherId,

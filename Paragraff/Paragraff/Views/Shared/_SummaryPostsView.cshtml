@@ -7,7 +7,7 @@
     <div class="widget-box">
         <div class="widget-title">
             <span class="icon"><i class="icon-th"></i></span>
-            <h5>Data table</h5>
+            <h5>Posts</h5>
         </div>
         <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
@@ -21,54 +21,61 @@
                         <th>Status</th>
                         <th>Date added</th>
                         <th>More</th>
+                        <th>Wishlist</th>
                     </tr>
                 </thead>
                 <tbody>
                     @{int i = 1;}
                     @foreach (var post in Model)
                     {
-                        <tr class="summary-posts">
-                            <td @*style="@(i % 2 == 0 ? "background-color: #DDDDDD" : "")"*@>@i</td>
-                            <td>
-                                <img class="summary-post-img" src="@Url.Action("GetBookCover", "Post", new { bookId = post.Book.BookId, area = "" })" alt="Book Cover" />
-                            </td>
-                            <td>
-                                @post.Book.Title
-                            </td>
-                            <td>
-                                @post.Book.Author
-                            </td>
-                            <td>
-                                @if (post.IsRated)
-                                {
-                                    @post.Ratings.Average(); <span>&nbsp;</span><span style="color:orange" class="fa fa-star"></span>
-                                }
-                                else
-                                {
-                                    <div>Not Rated</div>
-                                }
-                            </td>
-                            <td>
-                                @(post.IsRead ? "Read" : "To Read")
-                            </td>
-                            <td>
-                                @post.CreatedOn.ToString("dd.MM.yyyy")
-                            </td>
-                            <td>
-                                @Html.ActionLink("More", "Post", "Review", new { postId = post.PostId, area = "" }, new { @class = "btn btn-info" })
-                            </td>
-                        </tr>
-                        i++;
+                        if (post.IsActive)
+                        {
+                            <tr class="summary-posts">
+                                <td @*style="@(i % 2 == 0 ? "background-color: #DDDDDD" : "")"*@>@i</td>
+                                <td>
+                                    <img class="summary-post-img" src="@Url.Action("GetBookCover", "Post", new { bookId = post.Book.BookId, area = "" })" alt="Book Cover" />
+                                </td>
+                                <td>
+                                    @post.Book.Title
+                                </td>
+                                <td>
+                                    @post.Book.Author
+                                </td>
+                                <td>
+                                    @if (post.IsRated)
+                                    {
+                                        @post.Ratings.Average(); <span>&nbsp;</span><span style="color:orange" class="fa fa-star"></span>
+                                    }
+                                    else
+                                    {
+                                        <div>Not Rated</div>
+                                    }
+                                </td>
+                                <td>
+                                    @(post.IsRead ? "Read" : "To Read")
+                                </td>
+                                <td>
+                                    @post.CreatedOn.ToString("dd.MM.yyyy")
+                                </td>
+                                <td>
+                                    @Html.ActionLink("More", "Post", "Review", new { postId = post.PostId, area = "" }, new { @class = "btn btn-info" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Add To Wishlist", "AddToWishlist", "Wishlist", new { title = post.Book.Title, area = "" }, new { @class = "btn btn-info" })
+                                </td>
+                            </tr>
+                            i++;
+                        }
                     }
                 </tbody>
             </table>
         </div>
     </div>
-                        }
-                        else
-                        {
-                             <h3>No Posts</h3>
-                        }
+}
+else
+{
+    <h3>No Posts</h3>
+}
 
 <h6>
     test cache from PARTIAL: @DateTime.Now

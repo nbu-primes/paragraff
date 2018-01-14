@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Inbox";
+}
+
+<p>
+    @{Html.RenderAction("InboxSummary", "Message", new { area = "" });}
+</p>
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/matrix-tables")
+}
+

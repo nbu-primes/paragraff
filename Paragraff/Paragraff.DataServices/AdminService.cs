@@ -45,7 +45,7 @@ namespace Paragraff.DataServices
             var user = this.dbContext.Users.First(u => u.UserName == username);
             user.IsActive = !user.IsActive;
 
-            var postsByUser = this.dbContext.Posts.Where(p => p.Publisher == user);
+            var postsByUser = this.dbContext.Posts.Where(p => p.Publisher.UserName == user.UserName);
 
             foreach (var post in postsByUser)
             {
