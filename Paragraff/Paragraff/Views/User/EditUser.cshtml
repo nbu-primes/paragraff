@@ -10,7 +10,7 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary()
-            <img class="profile-picture" src="@Url.Action("UserPhotos", "User" )" />
+            <img class="profile-picture" src="@Url.Action("UserPhotos", "User", new { username = this.User.Identity.Name } )" />
 
             <div class="control-group">
                 @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-2 control-label", type = "file" })
