@@ -43,7 +43,7 @@ namespace Paragraff.DataServices
                     IsTradable = p.IsTradable,
                     Comments = p.Comments.Select(c => new CommentReviewDto()
                     {
-                        CreatorId = c.CreatorId,
+                        AuthorId = c.CreatorId,
                         Content = c.Content,
                         CreatedOn = c.CreatedOn
                     }),

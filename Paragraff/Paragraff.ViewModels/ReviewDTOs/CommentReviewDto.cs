@@ -14,7 +14,7 @@ namespace Paragraff.ViewModels.ReviewDTOs
         public string Content { get; set; }
 
         [Required]
-        public string CreatorId { get; set; }
+        public string AuthorId { get; set; }
         
         public DateTime CreatedOn { get; set; }
     }

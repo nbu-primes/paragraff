@@ -2,4 +2,24 @@
 
 
 @{Html.RenderAction("PostInfo", "Review", new { area = "", postId = Model });}
-@{Html.RenderAction("PostCommentSection", "Comment", new { area = "", postId = Model });}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1" id="logout">
+            <div class="comment-tabs">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
+                    <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="comments-logout">
+                        @{ Html.RenderAction("ShowComments", "Comment", new { area = "", postId = Model });}
+                    </div>
+                    <div class="tab-pane" id="add-comment">
+                        @{ Html.RenderAction("SubmitPostComments", "Comment", new { area = "", postId = Model });}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

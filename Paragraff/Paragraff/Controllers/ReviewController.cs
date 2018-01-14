@@ -58,7 +58,7 @@ namespace Paragraff.Controllers
                 IsRated = review.Ratings.Any(),
                 Comments = review.Comments.Select(c => new CommentReviewViewModel()
                 {
-                    CreatorId = c.CreatorId,
+                    Username = c.AuthorId,
                     Content = c.Content,
                     CreatedOn = c.CreatedOn
                 }),

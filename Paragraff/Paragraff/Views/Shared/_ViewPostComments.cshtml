@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CommentReviewViewModel>
+
+
+<ul class="media-list">
+    @if (!Model.Any())
+    {
+        <h4> Be first to comment this post. </h4>
+    }
+    @foreach (var comment in Model)
+    {
+        <li class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object img-circle" src="@Url.Action("UserPhotos", "User", new { area = "", username = comment.Username})" alt="profile">
+            </a>
+            <div class="media-body">
+                <div class="well well-lg">
+                    <h4 class="media-heading text-uppercase reviews">@comment.Username</h4>
+                    <span>@comment.CreatedOn</span>
+                    <ul class="media-date text-uppercase reviews list-inline"></ul>
+                    <p class="media-comment">
+                        @comment.Content
+                    </p>
+                </div>
+            </div>
+        </li>
+    }
+
+</ul>

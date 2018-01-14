@@ -1,4 +1,5 @@
-﻿using Paragraff.ViewModels.ReviewViewModels;
+﻿using Paragraff.ViewModels.ReviewDTOs;
+using Paragraff.ViewModels.ReviewViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Paragraff.DataServices.Contracts
     public interface ICommentService
     {
         void CreateComment(CommentReviewViewModel comment);
+        IEnumerable<CommentReviewDto> GetCommentsForPost(Guid postId);
     }
 }

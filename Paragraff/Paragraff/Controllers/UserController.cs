@@ -66,13 +66,10 @@ namespace Paragraff.Controllers
             return this.View();
         }
 
-        public FileContentResult UserPhotos()
+        public FileContentResult UserPhotos(string username)
         {
             if (User.Identity.IsAuthenticated)
             {
-                string userId = this.User.Identity.GetUserId();
-
-                var username = this.User.Identity.Name;
                 var userImage = this.userService.GetUserProfilePicture(username).Data;
                 if (userImage == null)
                 {

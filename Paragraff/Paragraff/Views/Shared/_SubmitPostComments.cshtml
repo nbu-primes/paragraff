@@ -1,0 +1,23 @@
+﻿@model CommentReviewViewModel
+
+<div class="tab-pane" id="add-comment">
+    @{ Model.CreatorId = this.User.Identity.GetUserId();}
+    @using (Html.BeginForm("PostComment", "Comment", new { area = "" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+        <div class="form-group">
+            @Html.HiddenFor(m => m.PostId)
+            @Html.HiddenFor(m => m.CreatorId)
+            @Html.LabelFor(m => m.Content, "Comment", new { @class = "control-label inline" })
+            @Html.TextAreaFor(m => m.Content)
+            <br />
+            @Html.ValidationMessageFor(m => m.Content, "", new { @class = "validation-msg" })
+        </div>
+
+        <div class="col-sm-offset-2 col-sm-10">
+            <input class="btn btn-success btn-circle text-uppercase" type="submit" value="Submit" />
+            @*<span class="fa fa-send"></span> Summit comment*@
+            @*</input>*@
+        </div>
+    }
+</div>

@@ -14,23 +14,40 @@ namespace Paragraff.Controllers
     {
 
         private readonly ICommentService commentService;
+        private readonly ApplicationUserManager userManager;
 
-        public CommentController(ICommentService commentService)
+        public CommentController(ICommentService commentService, ApplicationUserManager userManager)
         {
             Guard.WhenArgument(commentService, "commentService").IsNull().Throw();
+            Guard.WhenArgument(userManager, "userManager").IsNull().Throw();
 
             this.commentService = commentService;
+            this.userManager = userManager;
         }
-
-        public ActionResult PostCommentSection(Guid postId)
+        
+        public ActionResult SubmitPostComments(Guid postId)
         {
             CommentReviewViewModel commentVm = new CommentReviewViewModel()
             {
                 PostId = postId
             };
-            return this.PartialView("_PostCommentSection", commentVm);
+            return this.PartialView("_SubmitPostComments", commentVm);
         }
 
+        public ActionResult ShowComments(Guid postId)
+        {
+            var comments = this.commentService.GetCommentsForPost(postId)
+                .Select(dto => new CommentReviewViewModel()
+                {
+                    Content = dto.Content,
+                    CreatedOn = dto.CreatedOn,
+                    Username = this.userManager.FindById(dto.AuthorId).UserName
+                });
+
+            return this.PartialView("_ViewPostComments", comments);
+        }
+
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult PostComment(CommentReviewViewModel commentVm)

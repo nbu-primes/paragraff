@@ -3,6 +3,7 @@ using Paragraff.Data;
 using Paragraff.Data.Models;
 using Paragraff.DataServices.Contracts;
 using Paragraff.Services.Providers;
+using Paragraff.ViewModels.ReviewDTOs;
 using Paragraff.ViewModels.ReviewViewModels;
 using System;
 using System.Collections.Generic;
@@ -32,13 +33,27 @@ namespace Paragraff.DataServices
             {
                 Id = Guid.NewGuid(),
                 Content = commentVm.Content,
-                CreatorId = commentVm.PublisherId,
+                CreatorId = commentVm.CreatorId,
                 PostId = commentVm.PostId,
                 CreatedOn = this.dateTimeProvider.Now()
             };
 
             this.context.Comments.Add(comment);
             this.context.SaveChanges();
+        }
+
+        public IEnumerable<CommentReviewDto> GetCommentsForPost(Guid postId)
+        {
+            var comments = this.context.Comments.Where(c => c.PostId == postId)
+                    .Select(c => new CommentReviewDto()
+                    {
+                        Content = c.Content,
+                        CreatedOn = c.CreatedOn,
+                        AuthorId = c.CreatorId
+                    })
+                    .OrderByDescending(c => c.CreatedOn);
+
+            return comments;
         }
     }
 }

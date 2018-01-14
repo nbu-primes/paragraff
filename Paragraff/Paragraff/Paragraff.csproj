@@ -450,7 +450,8 @@
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Review\Post.cshtml" />
     <Content Include="Views\Shared\_PostInfo.cshtml" />
-    <Content Include="Views\Shared\_PostCommentSection.cshtml" />
+    <Content Include="Views\Shared\_SubmitPostComments.cshtml" />
+    <Content Include="Views\Shared\_ViewPostComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
