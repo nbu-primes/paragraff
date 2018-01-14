@@ -51,7 +51,8 @@ namespace Paragraff.DataServices
                         CreatedOn = c.CreatedOn,
                         AuthorId = c.CreatorId
                     })
-                    .OrderByDescending(c => c.CreatedOn);
+                    .OrderByDescending(c => c.CreatedOn)
+                    .ToList();
 
             return comments;
         }
