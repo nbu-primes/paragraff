@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Paragraff.ViewModels.ReviewDTOs;
 using Bytes2you.Validation;
 using Paragraff.Data;
+using Paragraff.ViewModels.PostViewModels;
 
 namespace Paragraff.DataServices
 {
@@ -52,7 +53,8 @@ namespace Paragraff.DataServices
                         Id = p.Book.Id,
                         Author = p.Book.Author,
                         Category = p.Book.Category.CategoryName,
-                        Title = p.Book.Title
+                        Title = p.Book.Title,
+                        Wishers = p.Book.Wisher.Select(u => new UserViewModel() { UserId = u.Id, Username = u.UserName})
                     },
                     Price = p.Price
                 })

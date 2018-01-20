@@ -288,3 +288,7 @@ input[type="file"] {
 .custom-input-file:hover .uploadPhoto {
     display: block;
 }
+
+img.wisher-image{
+    width:15px !important;
+}

@@ -67,7 +67,8 @@ namespace Paragraff.Controllers
                     Id = review.Book.Id,
                     Author = review.Book.Author,
                     Category = review.Book.Category,
-                    Title = review.Book.Title
+                    Title = review.Book.Title,
+                    Wishers = review.Book.Wishers
                 },
                 Description = review.Description,
                 CreatedOn = review.CreatedOn,

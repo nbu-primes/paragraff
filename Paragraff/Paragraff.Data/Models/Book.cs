@@ -10,6 +10,11 @@ namespace Paragraff.Data.Models
 {
     public class Book
     {
+        public Book()
+        {
+            this.Wisher = new HashSet<User>();
+        }
+
         public Guid Id { get; set; }
         
         [Index(IsUnique = true)]
@@ -20,10 +25,8 @@ namespace Paragraff.Data.Models
         public Guid CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-
-        public string WisherId { get; set; }
-
-        public virtual User Wisher { get; set; }
+        
+        public virtual ICollection<User> Wisher { get; set; }
 
         [Required]
         public string Author { get; set; }

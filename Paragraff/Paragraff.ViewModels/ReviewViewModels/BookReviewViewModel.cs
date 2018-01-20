@@ -1,10 +1,18 @@
-﻿using System;
+﻿using Paragraff.ViewModels.PostViewModels;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Paragraff.ViewModels.ReviewViewModels
 {
     public class BookReviewViewModel
     {
+        public BookReviewViewModel()
+        {
+            this.Wishers = new HashSet<UserViewModel>();
+        }
+
         public Guid Id { get; set; }
 
         [StringLength(100, MinimumLength = 1)]
@@ -15,5 +23,7 @@ namespace Paragraff.ViewModels.ReviewViewModels
 
         [Required]
         public string Author { get; set; }
+
+        public IEnumerable<UserViewModel> Wishers { get; set; }
     }
 }

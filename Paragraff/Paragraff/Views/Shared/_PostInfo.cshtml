@@ -1,5 +1,4 @@
 ﻿@model PostReviewViewModel
-
 <div class="row review-top-margin">
     <div class="span2">
         <img class="review-img"
@@ -14,25 +13,36 @@
        new { @class = "review-title" }) > @Model.Book.Title
 </h2>
 <h4>@Model.Book.Title</h4>
-        <p>
-            by <strong>@Model.Book.Author</strong>
-        </p>
-        <p>
-            <span class="fa fa-star" style="color:orange"></span>
-            @if (Model.IsRated)
+<p>
+    by <strong>@Model.Book.Author</strong>
+</p>
+<p>
+    <span class="fa fa-star" style="color:orange"></span>
+    @if (Model.IsRated)
             {
-                <span>@Model.Ratings.Average()</span>
-            }
-            else
+        <span>@Model.Ratings.Average()</span>
+    }
+    else
+    {
+        <span>not rated</span>
+    }
+</p>
+<h6>
+    @Model.Description
+</h6>
+<div>
+    Wished from @Model.Book.Wishers.Count() people:
+    @foreach (var w in Model.Book.Wishers)
             {
-                <span>not rated</span>
-            }
-        </p>
-        <p>
-            @Model.Description
-        </p>
+        <h5 style="display:inline-block">
+            <img src="@Url.Action("UserPhotos", "User", new { area = "", username = w.Username })" class="wisher-image" alt="User photo" />
+            @Html.ActionLink(w.Username, "UserProfile", "User", new { area = "", username = w.Username }, new {@class = "review-title" })
+        </h5>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+    }
+</div>
 
-        <hr />
-    </div>
+<hr />
+</div>
 </div>
 

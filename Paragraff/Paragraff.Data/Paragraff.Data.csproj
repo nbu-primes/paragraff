@@ -134,6 +134,10 @@
     <Compile Include="Migrations\201712281422457_post-add-rows-isread-istradable.Designer.cs">
       <DependentUpon>201712281422457_post-add-rows-isread-istradable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801201820077_book-has-many-wishers.cs" />
+    <Compile Include="Migrations\201801201820077_book-has-many-wishers.Designer.cs">
+      <DependentUpon>201801201820077_book-has-many-wishers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
@@ -209,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712281422457_post-add-rows-isread-istradable.resx">
       <DependentUpon>201712281422457_post-add-rows-isread-istradable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801201820077_book-has-many-wishers.resx">
+      <DependentUpon>201801201820077_book-has-many-wishers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paragraff.ViewModels.PostViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,6 +10,11 @@ namespace Paragraff.ViewModels.ReviewDTOs
 {
     public class BookReviewDto
     {
+        public BookReviewDto()
+        {
+            this.Wishers = new HashSet<UserViewModel>();
+        }
+
         public Guid Id { get; set; }
         
         [StringLength(100, MinimumLength = 1)]
@@ -19,6 +25,8 @@ namespace Paragraff.ViewModels.ReviewDTOs
         
         [Required]
         public string Author { get; set; }
-        
+
+        public IEnumerable<UserViewModel> Wishers { get; set; }
+
     }
 }
