@@ -9,7 +9,8 @@ namespace Paragraff.DataServices.Contracts
 {
     public interface IReviewService
     {
-        PostReviewDto GetPostReview(Guid postId);
+        PostReviewDto GetPostReview(Guid postId, string userId);
         byte[] GetBookImage(Guid bookId);
+        double RatePost(Guid postId, int ratedFromViewer, string userId);
     }
 }

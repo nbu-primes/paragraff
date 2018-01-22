@@ -16,16 +16,31 @@
 <p>
     by <strong>@Model.Book.Author</strong>
 </p>
-<p>
-    <span class="fa fa-star" style="color:orange"></span>
-    @if (Model.IsRated)
-            {
-        <span>@Model.Ratings.Average()</span>
-    }
-    else
-    {
-        <span>not rated</span>
-    }
+<p style="display:inline-block">
+    <span class="fa fa-star fa-2x" style="color:orange;"></span>
+    <h2 style="display:inline-block" id="review-rating">@(Model.IsRated ? @Model.Ratings.Average().ToString() : "not Rated")</h2>
+    <div class="control-group" style="display:inline-block; margin-left:30px" >
+        @using (Ajax.BeginForm("RatePost", "Review",
+                    new { area = "" },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        UpdateTargetId = "review-rating",
+                        InsertionMode = System.Web.Mvc.Ajax.InsertionMode.Replace
+                    }))
+        {
+            @Html.AntiForgeryToken();
+
+            @Html.HiddenFor(m => m.PostId);
+            <div class="controls">
+                <span class="icon icon-pencil" style="color:yellowgreen"></span>
+                @Html.DropDownListFor(m => m.RatedFromViewer, new SelectList(Enumerable.Range(1, 10)),
+                   new { onchange = "$(this.form).submit();", style = "width:60px !important" })
+                <br />
+            </div>
+        }
+
+    </div>
 </p>
 <h6>
     @Model.Description
@@ -36,7 +51,7 @@
             {
         <h5 style="display:inline-block">
             <img src="@Url.Action("UserPhotos", "User", new { area = "", username = w.Username })" class="wisher-image" alt="User photo" />
-            @Html.ActionLink(w.Username, "UserProfile", "User", new { area = "", username = w.Username }, new {@class = "review-title" })
+            @Html.ActionLink(w.Username, "UserProfile", "User", new { area = "", username = w.Username }, new { @class = "review-title" })
         </h5>
         <span>&nbsp;&nbsp;&nbsp;</span>
     }
@@ -45,4 +60,3 @@
 <hr />
 </div>
 </div>
-

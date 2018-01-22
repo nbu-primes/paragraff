@@ -30,5 +30,7 @@ namespace Paragraff.ViewModels.ReviewDTOs
 
         public IEnumerable<CommentReviewDto> Comments { get; set; }
 
+        public int? RatedFromViewer { get; set; }
+
     }
 }

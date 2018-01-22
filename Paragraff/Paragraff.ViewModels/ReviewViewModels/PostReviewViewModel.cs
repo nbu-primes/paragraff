@@ -34,5 +34,7 @@ namespace Paragraff.ViewModels.ReviewViewModels
         public IEnumerable<CommentReviewViewModel> Comments { get; set; }
 
         public IEnumerable<int> Ratings { get; set; }
+
+        public int? RatedFromViewer { get; set; }
     }
 }

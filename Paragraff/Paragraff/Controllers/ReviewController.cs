@@ -44,11 +44,19 @@ namespace Paragraff.Controllers
             }
         }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult RatePost(Guid postId, int ratedFromViewer)
+        {
+            var avarageRating = this.reviewService.RatePost(postId, ratedFromViewer, this.User.Identity.GetUserId());
+            return this.Json(avarageRating);
+        }
+
         [ChildActionOnly]
         //[OutputCache(Duration = 120)]
         public ActionResult PostInfo(Guid postId)
         {
-            var review = this.reviewService.GetPostReview(postId);
+            var review = this.reviewService.GetPostReview(postId, this.HttpContext.User.Identity.GetUserId());
 
             Guard.WhenArgument(review, "review").IsNull().Throw();
 
@@ -56,6 +64,7 @@ namespace Paragraff.Controllers
             {
                 PostId = review.PostId,
                 IsRated = review.Ratings.Any(),
+                RatedFromViewer = review.RatedFromViewer,
                 Comments = review.Comments.Select(c => new CommentReviewViewModel()
                 {
                     Username = c.AuthorId,
