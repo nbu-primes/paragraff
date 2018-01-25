@@ -162,7 +162,7 @@ namespace Paragraff.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Username, Email = model.Email , IsActive = true};
+                var user = new User { UserName = model.Username, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -178,11 +178,11 @@ namespace Paragraff.Controllers
                     // Uncomment to debug locally 
                     // TempData["ViewBagLink"] = callbackUrl;
 
-                    //ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                    //                + "before you can log in.";
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                                    + "before you can log in.";
 
-                    //return View("Info");
-                    return RedirectToAction("Index", "Home");
+                    return View("Info");
+                    //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }

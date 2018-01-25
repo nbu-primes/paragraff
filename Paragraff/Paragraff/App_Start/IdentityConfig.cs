@@ -35,7 +35,7 @@ namespace Paragraff
         {
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
-            myMessage.From = new EmailAddress("Joe@contoso.com", "Joe S.");
+            myMessage.From = new EmailAddress("paragraff.nbu@gmail.com", "Paragraff team");
             myMessage.Subject = message.Subject;
             myMessage.PlainTextContent = message.Body;
             myMessage.HtmlContent = message.Body;
@@ -45,8 +45,8 @@ namespace Paragraff
                        ConfigurationManager.AppSettings["mailPassword"]
                        );
 
-            //var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
-            SendGridClient client = null;
+            var apiKey = "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";
+            SendGridClient client = new SendGridClient(apiKey);
 
             // Send the email.
             if (client != null)
